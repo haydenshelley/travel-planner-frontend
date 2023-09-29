@@ -1,3 +1,5 @@
+import { Header } from "./Header";
+
 export function PlacesNew(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -8,6 +10,7 @@ export function PlacesNew(props) {
 
   return (
     <div>
+      <Header />
       <h1>New Place</h1>
       <form onSubmit={handleSubmit}>
         <div>

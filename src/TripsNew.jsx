@@ -1,3 +1,5 @@
+import { Header } from "./Header";
+
 export function TripsNew(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -7,6 +9,7 @@ export function TripsNew(props) {
   };
   return (
     <div>
+      <Header />
       <h1>New Trip</h1>
       <form onSubmit={handleSubmit}>
         <div>

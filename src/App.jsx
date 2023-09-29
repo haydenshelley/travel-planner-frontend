@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
         <Content />
         <Footer />
       </BrowserRouter>
