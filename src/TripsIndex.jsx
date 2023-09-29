@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 export function TripsIndex(props) {
   return (
     <div>
       <h1>My Trips</h1>
+      <Link to="/trips/new">New Trip</Link>
       {props.trips.map((trip) => (
         <div key={trip.id}>
           <h2>{trip.title}</h2>

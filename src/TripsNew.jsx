@@ -3,6 +3,7 @@ export function TripsNew(props) {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreateTrip(params, () => e.target.reset());
+    window.location.href = "/trips";
   };
   return (
     <div>
@@ -15,10 +16,10 @@ export function TripsNew(props) {
           Image URL: <input name="image_url" type="text" />
         </div>
         <div>
-          Start Date: <input name="start_time" type="text" />
+          Start Date: <input name="start_time" type="date" />
         </div>
         <div>
-          End Date: <input name="end_time" type="text" />
+          End Date: <input name="end_time" type="date" />
         </div>
         <button type="submit">Create Trip</button>
       </form>

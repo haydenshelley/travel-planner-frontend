@@ -43,13 +43,13 @@ export function Content() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/trips" element={<TripsIndex trips={trips} />} />
+        <Route
+          path="/trips/new"
+          element={<TripsNew onCreateTrip={handleCreateTrip} />}
+        />
       </Routes>
-      {/* <h1>Vacation Planner</h1>
-      <TripsIndex trips={trips} />
-      <TripsNew onCreateTrip={handleCreateTrip} />
-      <PlacesNew onCreatePlace={handleCreatePlace} />
-      <Signup />
-      <Login /> */}
+      {/* <PlacesNew onCreatePlace={handleCreatePlace} />  */}
     </div>
   );
 }
