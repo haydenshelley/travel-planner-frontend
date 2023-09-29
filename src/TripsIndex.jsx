@@ -13,6 +13,7 @@ export function TripsIndex(props) {
             Dates: {trip.start_time} - {trip.end_time}
           </p>
           <h2>{trip.title} Activities</h2>
+          <Link to="/trips/places/new">New Activity</Link>
           {trip.places.map((place) => (
             <div key={place.id}>
               <h3>{place.name}</h3>
