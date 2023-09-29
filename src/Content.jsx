@@ -50,7 +50,9 @@ export function Content() {
         />
         <Route
           path="/trips/places/new"
-          element={<PlacesNew onCreatePlace={handleCreatePlace} />}
+          element={
+            <PlacesNew onCreatePlace={handleCreatePlace} trips={trips} />
+          }
         />
       </Routes>
     </div>

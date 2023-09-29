@@ -16,10 +16,10 @@ export function TripsNew(props) {
           Image URL: <input name="image_url" type="text" />
         </div>
         <div>
-          Start Date: <input name="start_time" type="date" />
+          Start Date: <input name="start_time" type="datetime-local" />
         </div>
         <div>
-          End Date: <input name="end_time" type="date" />
+          End Date: <input name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Create Trip</button>
       </form>

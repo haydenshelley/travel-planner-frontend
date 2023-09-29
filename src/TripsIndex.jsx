@@ -19,9 +19,9 @@ export function TripsIndex(props) {
               <h3>{place.name}</h3>
               <p>{place.address}</p>
               <img width="400" height="300" src={place.image_url} />
-              <p>
-                Dates: {place.start_time} - {place.end_time}
-              </p>
+              <p>Date: {place.date}</p>
+              <p>Starts: {place.start_time}</p>
+              <p>Ends: {place.end_time}</p>
               <p>Description: {place.description}</p>
             </div>
           ))}
