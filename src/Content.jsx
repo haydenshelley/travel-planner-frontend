@@ -1,11 +1,12 @@
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
+import { LandingPage } from "./LandingPage";
 import { TripsIndex } from "./TripsIndex";
 import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
-import { Modal } from "./Modal";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -38,15 +39,17 @@ export function Content() {
 
   return (
     <div>
-      <h1>Vacation Planner</h1>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      {/* <h1>Vacation Planner</h1>
       <TripsIndex trips={trips} />
       <TripsNew onCreateTrip={handleCreateTrip} />
       <PlacesNew onCreatePlace={handleCreatePlace} />
-      <Modal show={false}>
-        <h1>TEST</h1>
-      </Modal>
       <Signup />
-      <Login />
+      <Login /> */}
     </div>
   );
 }
