@@ -28,9 +28,8 @@ export function TripsIndex(props) {
             <Link to={`/trips/${trip.id}`}>{trip.title}</Link>
             <br />
             <img width="400" height="300" src={trip.image_url} />
-            <p>
-              Dates: {trip.start_time} - {trip.end_time}
-            </p>
+            <p>Arrive: {trip.start_time}</p>
+            <p>Depart: {trip.end_time}</p>
             <Link to={`/trips/${trip.id}/edit`}>Edit Trip</Link>
             <br />
             <button onClick={() => handleDestroyTrip(trip)}>Cancel Trip</button>

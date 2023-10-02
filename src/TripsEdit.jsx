@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Header } from "./Header";
 
 export function TripsEdit() {
   const { id } = useParams();
@@ -31,6 +32,7 @@ export function TripsEdit() {
 
   return (
     <div>
+      <Header />
       <h1>Editing {trip.title}</h1>
       <form onSubmit={handleSubmit}>
         <div>

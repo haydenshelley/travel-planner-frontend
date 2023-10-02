@@ -35,6 +35,9 @@ export function TripsShow() {
     <div>
       <Header />
       <h1>{trip.title} Activities</h1>
+      <h4>
+        {trip.start_time} - {trip.end_time}
+      </h4>
       {places.map((place) => (
         <div key={place.id}>
           <h3>{place.name}</h3>
