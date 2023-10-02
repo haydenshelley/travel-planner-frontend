@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { Header } from "./Header";
+import axios from "axios";
 
 export function TripsIndex(props) {
   const sortedTrips = [...props.trips].sort(
     (a, b) => new Date(a.start_time) - new Date(b.start_time)
   );
+
+  const handleDestroyTrip = (trip) => {
+    axios
+      .delete(`http://localhost:3000/trips/${trip.id}.json`)
+      .then(window.location.reload(true));
+  };
 
   return (
     <div>
@@ -24,6 +31,7 @@ export function TripsIndex(props) {
             <p>
               Dates: {trip.start_time} - {trip.end_time}
             </p>
+            <button onClick={() => handleDestroyTrip(trip)}>Cancel Trip</button>
             <hr />
           </div>
         ))
