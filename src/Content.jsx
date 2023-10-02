@@ -8,6 +8,7 @@ import { TripsIndex } from "./TripsIndex";
 import { TripsShow } from "./TripsShow";
 import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
+import { PlacesEdit } from "./PlacesEdit";
 import { TripsEdit } from "./TripsEdit";
 
 export function Content() {
@@ -58,6 +59,7 @@ export function Content() {
             <PlacesNew onCreatePlace={handleCreatePlace} trips={trips} />
           }
         />
+        <Route path="/trips/places/:id/edit" element={<PlacesEdit />} />
       </Routes>
     </div>
   );

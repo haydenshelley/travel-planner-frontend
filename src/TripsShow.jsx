@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "./Header";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export function TripsShow() {
@@ -44,9 +45,11 @@ export function TripsShow() {
           <p>{place.address}</p>
           <img width="400" height="300" src={place.image_url} />
           <p>Date: {place.date}</p>
-          <p>Starts: {place.start_time}</p>
-          <p>Ends: {place.end_time}</p>
+          <p>Starts: {place.start}</p>
+          <p>Ends: {place.end}</p>
           <p>Description: {place.description}</p>
+          <Link to={`/trips/places/${place.id}/edit`}>Edit Activity</Link>
+          <br />
           <button onClick={() => handleDestroyPlace(place)}>
             Cancel Activity
           </button>
