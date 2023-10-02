@@ -5,6 +5,7 @@ import { Login } from "./Login";
 import { Signup } from "./Signup";
 import { LandingPage } from "./LandingPage";
 import { TripsIndex } from "./TripsIndex";
+import { TripsShow } from "./TripsShow";
 import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
 
@@ -44,6 +45,7 @@ export function Content() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/trips" element={<TripsIndex trips={trips} />} />
+        <Route path="/trips/:id" element={<TripsShow />} />
         <Route
           path="/trips/new"
           element={<TripsNew onCreateTrip={handleCreateTrip} />}
