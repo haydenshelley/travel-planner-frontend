@@ -31,6 +31,8 @@ export function TripsIndex(props) {
             <p>
               Dates: {trip.start_time} - {trip.end_time}
             </p>
+            <Link to={`/trips/${trip.id}/edit`}>Edit Trip</Link>
+            <br />
             <button onClick={() => handleDestroyTrip(trip)}>Cancel Trip</button>
             <hr />
           </div>

@@ -8,6 +8,7 @@ import { TripsIndex } from "./TripsIndex";
 import { TripsShow } from "./TripsShow";
 import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
+import { TripsEdit } from "./TripsEdit";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -50,6 +51,7 @@ export function Content() {
           path="/trips/new"
           element={<TripsNew onCreateTrip={handleCreateTrip} />}
         />
+        <Route path="/trips/:id/edit" element={<TripsEdit />} />
         <Route
           path="/trips/places/new"
           element={
