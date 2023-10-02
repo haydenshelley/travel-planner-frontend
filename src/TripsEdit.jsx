@@ -5,10 +5,14 @@ import axios from "axios";
 export function TripsEdit() {
   const { id } = useParams();
   const [trip, setTrip] = useState({});
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:3000/trips/${id}.json`).then((response) => {
       setTrip(response.data);
+      setStartTime(formatDateForInput(response.data.start_time));
+      setEndTime(formatDateForInput(response.data.end_time));
     });
   }, [id]);
 
@@ -20,8 +24,6 @@ export function TripsEdit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.set("start_time", formatDateForInput(formData.get("start_time")));
-    formData.set("end_time", formatDateForInput(formData.get("end_time")));
     axios
       .patch(`http://localhost:3000/trips/${id}.json`, formData)
       .then((window.location.href = "/trips"));
@@ -41,18 +43,14 @@ export function TripsEdit() {
         <div>
           Start Date:{" "}
           <input
-            defaultValue={formatDateForInput(trip.start_time)}
+            defaultValue={startTime}
             name="start_time"
             type="datetime-local"
           />
         </div>
         <div>
           End Date:{" "}
-          <input
-            defaultValue={formatDateForInput(trip.end_time)}
-            name="end_time"
-            type="datetime-local"
-          />
+          <input defaultValue={endTime} name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Update Trip</button>
       </form>
