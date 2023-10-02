@@ -36,10 +36,10 @@ export function TripsShow() {
     <div>
       <Header />
       <h1>{trip.title} Activities</h1>
-      <Link to={"/trips/places/new"}>Add Activity</Link>
       <h4>
         {trip.start_time} - {trip.end_time}
       </h4>
+      <Link to={`/trips/${id}/places/new`}>Add Activity</Link>
       {places.map((place) => (
         <div key={place.id}>
           <h3>{place.name}</h3>

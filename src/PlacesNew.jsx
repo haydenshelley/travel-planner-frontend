@@ -1,14 +1,17 @@
 import { Header } from "./Header";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 export function PlacesNew(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const { id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreatePlace(params, () => e.target.reset());
-    window.location.href = "/trips";
+    window.location.href = `/trips/${id}`;
   };
 
   const handleStartTimeChange = (e) => {
@@ -26,7 +29,7 @@ export function PlacesNew(props) {
       <form onSubmit={handleSubmit}>
         <div>
           Trip:
-          <select name="trip_id">
+          <select name="trip_id" defaultValue={id}>
             {props.trips.map((trip) => (
               <option key={trip.id} value={trip.id}>
                 {trip.title}

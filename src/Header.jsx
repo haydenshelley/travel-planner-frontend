@@ -6,8 +6,7 @@ export function Header() {
     <header>
       <nav>
         <Link to={"/trips"}>My Trips</Link> | |{" "}
-        <Link to={"/trips/new"}>New Trip</Link> | |{" "}
-        <Link to={"/trips/places/new"}>New Activity</Link> || <LogoutLink />
+        <Link to={"/trips/new"}>New Trip</Link> | | <LogoutLink />
       </nav>
     </header>
   );

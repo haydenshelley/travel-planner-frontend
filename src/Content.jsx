@@ -59,7 +59,7 @@ export function Content() {
         />
         <Route path="/trips/:id/edit" element={<TripsEdit />} />
         <Route
-          path="/trips/places/new"
+          path="/trips/:id/places/new"
           element={
             <PlacesNew onCreatePlace={handleCreatePlace} trips={trips} />
           }
