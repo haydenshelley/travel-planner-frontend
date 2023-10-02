@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "./Header";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export function TripsShow() {
   const { id } = useParams();
@@ -25,6 +26,12 @@ export function TripsShow() {
       .catch((error) => console.error("Error fetching trip:", error));
   }, [id]);
 
+  const handleDestroyPlace = (place) => {
+    axios
+      .delete(`http://localhost:3000/places/${place.id}.json`)
+      .then(window.location.reload(true));
+  };
+
   return (
     <div>
       <Header />
@@ -39,6 +46,9 @@ export function TripsShow() {
           <p>Starts: {place.start_time}</p>
           <p>Ends: {place.end_time}</p>
           <p>Description: {place.description}</p>
+          <button onClick={() => handleDestroyPlace(place)}>
+            Cancel Activity
+          </button>
         </div>
       ))}
     </div>
