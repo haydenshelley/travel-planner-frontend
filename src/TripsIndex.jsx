@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { Header } from "./Header";
 
 export function TripsIndex(props) {
+  const sortedTrips = [...props.trips].sort(
+    (a, b) => new Date(a.start_time) - new Date(b.start_time)
+  );
+
   return (
     <div>
       <Header />
@@ -12,7 +16,7 @@ export function TripsIndex(props) {
           <Link to="/trips/new">Try creating a new trip!</Link>
         </div>
       ) : (
-        props.trips.map((trip) => (
+        sortedTrips.map((trip) => (
           <div key={trip.id}>
             <Link to={`/trips/${trip.id}`}>{trip.title}</Link>
             <br />

@@ -13,7 +13,14 @@ export function TripsShow() {
       .then((response) => response.json())
       .then((data) => {
         setTrip(data);
-        setPlaces(data.places);
+        const sortedPlaces = [...data.places].sort((a, b) => {
+          const dateCompare = new Date(a.date) - new Date(b.date);
+          if (dateCompare === 0) {
+            return new Date(a.start_time) - new Date(b.start_time);
+          }
+          return dateCompare;
+        });
+        setPlaces(sortedPlaces);
       })
       .catch((error) => console.error("Error fetching trip:", error));
   }, [id]);
