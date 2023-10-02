@@ -13,12 +13,14 @@ import { TripsEdit } from "./TripsEdit";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
+  const [user, setUser] = useState("");
 
   const handleTripsIndex = () => {
     console.log("handleTripsIndex");
     axios.get("http://localhost:3000/trips.json").then((response) => {
       console.log(response.data);
       setTrips(response.data);
+      setUser(response.data[0].user.name);
     });
   };
 
@@ -46,7 +48,10 @@ export function Content() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/trips" element={<TripsIndex trips={trips} />} />
+        <Route
+          path="/trips"
+          element={<TripsIndex trips={trips} user={user} />}
+        />
         <Route path="/trips/:id" element={<TripsShow />} />
         <Route
           path="/trips/new"
