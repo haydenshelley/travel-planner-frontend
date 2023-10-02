@@ -11,7 +11,7 @@ export function PlacesNew(props) {
   return (
     <div>
       <Header />
-      <h1>New Place</h1>
+      <h1>New Activity</h1>
       <form onSubmit={handleSubmit}>
         <div>
           Trip:

@@ -1,11 +1,13 @@
 import { LogoutLink } from "./LogoutLink";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
     <header>
       <nav>
-        <a href="/trips">My Trips</a> | <a href="/trips/new">New Trip</a> |{" "}
-        <LogoutLink />
+        <Link to={"/trips"}>My Trips</Link> | |{" "}
+        <Link to={"/trips/new"}>New Trip</Link> | |{" "}
+        <Link to={"/trips/places/new"}>New Activity</Link> || <LogoutLink />
       </nav>
     </header>
   );
