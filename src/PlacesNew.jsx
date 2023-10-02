@@ -41,7 +41,7 @@ export function PlacesNew(props) {
         <div>
           End Time: <input name="end_time" type="datetime-local" />
         </div>
-        <button type="submit">Create place</button>
+        <button type="submit">Create Activity</button>
       </form>
     </div>
   );
