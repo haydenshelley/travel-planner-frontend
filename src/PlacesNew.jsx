@@ -1,11 +1,22 @@
 import { Header } from "./Header";
-
+import { useState } from "react";
 export function PlacesNew(props) {
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreatePlace(params, () => e.target.reset());
     window.location.href = "/trips";
+  };
+
+  const handleStartTimeChange = (e) => {
+    setStartTime(e.target.value);
+  };
+
+  const handleEndTimeChange = (e) => {
+    setEndTime(e.target.value);
   };
 
   return (
@@ -36,10 +47,21 @@ export function PlacesNew(props) {
           Image URL: <input name="image_url" type="text" />
         </div>
         <div>
-          Start Time: <input name="start_time" type="datetime-local" />
+          Start Time:{" "}
+          <input
+            name="start_time"
+            type="datetime-local"
+            onChange={handleStartTimeChange}
+          />
         </div>
         <div>
-          End Time: <input name="end_time" type="datetime-local" />
+          End Time:{" "}
+          <input
+            name="end_time"
+            type="datetime-local"
+            defaultValue={startTime}
+            onChange={handleEndTimeChange}
+          />
         </div>
         <button type="submit">Create Activity</button>
       </form>
