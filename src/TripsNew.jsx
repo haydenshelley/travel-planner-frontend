@@ -1,3 +1,5 @@
+import { Header } from "./Header";
+
 export function TripsNew(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -7,6 +9,7 @@ export function TripsNew(props) {
   };
   return (
     <div>
+      <Header />
       <h1>New Trip</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -16,10 +19,10 @@ export function TripsNew(props) {
           Image URL: <input name="image_url" type="text" />
         </div>
         <div>
-          Start Date: <input name="start_time" type="date" />
+          Start Date: <input name="start_time" type="datetime-local" />
         </div>
         <div>
-          End Date: <input name="end_time" type="date" />
+          End Date: <input name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Create Trip</button>
       </form>
