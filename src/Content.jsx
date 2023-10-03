@@ -10,6 +10,7 @@ import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
 import { PlacesEdit } from "./PlacesEdit";
 import { TripsEdit } from "./TripsEdit";
+import { Recommendations } from "./Recommendations";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -65,6 +66,7 @@ export function Content() {
           }
         />
         <Route path="/trips/places/:id/edit" element={<PlacesEdit />} />
+        <Route path="/recommendations" element={<Recommendations />} />
       </Routes>
     </div>
   );
