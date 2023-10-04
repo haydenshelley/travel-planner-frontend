@@ -66,7 +66,12 @@ export function Content() {
           }
         />
         <Route path="/trips/places/:id/edit" element={<PlacesEdit />} />
-        <Route path="/recommendations" element={<Recommendations />} />
+        <Route
+          path="/recommendations"
+          element={
+            <Recommendations trips={trips} onCreatePlace={handleCreatePlace} />
+          }
+        />
       </Routes>
     </div>
   );

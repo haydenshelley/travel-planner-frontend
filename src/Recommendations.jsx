@@ -2,7 +2,7 @@ import { Header } from "./Header";
 import { useState } from "react";
 import axios from "axios";
 
-export function Recommendations() {
+export function Recommendations(props) {
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 5;
@@ -13,6 +13,8 @@ export function Recommendations() {
   const [location, setLocation] = useState("");
   const [proximity, setProximity] = useState("");
   const [category, setCategory] = useState("");
+  const [selectedTrip, setSelectedTrip] = useState("");
+  const [showForm, setShowForm] = useState(false);
   const categoryOptions = [
     ["catering.restaurant", "Restuarant(All)"],
     ["catering.restaurant.burger", "Restuarant(Burger)"],
@@ -32,6 +34,16 @@ export function Recommendations() {
     ["tourism.attraction", "Tourism Sites"],
     ["production.brewery", "Brewery"],
   ];
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+
+  const handleStartTimeChange = (e) => {
+    setStartTime(e.target.value);
+  };
+
+  const handleEndTimeChange = (e) => {
+    setEndTime(e.target.value);
+  };
 
   const handleMoreResults = () => {
     setCurrentPage(currentPage + 1);
@@ -47,7 +59,15 @@ export function Recommendations() {
         setResults(response.data.features);
         setCurrentPage(1);
         setResultsClicked(true);
+        console.log(props.trips);
       });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const params = new FormData(e.target);
+    props.onCreatePlace(params, () => e.target.reset());
+    window.location.href = `/trips/${id}`;
   };
 
   return (
@@ -80,11 +100,12 @@ export function Recommendations() {
             name="proximity"
             onChange={(e) => setProximity(e.target.value)}
           >
-            <option value="1609.34">1</option>
-            <option value="8046.72">5</option>
-            <option value="16093.4">10</option>
-            <option value="24140.2">15</option>
-            <option value="32186.9">20</option>
+            <option value="">Select</option>
+            <option value="1609">1</option>
+            <option value="8046">5</option>
+            <option value="16093">10</option>
+            <option value="24140">15</option>
+            <option value="32186">20</option>
           </select>{" "}
           mile(s)
         </label>
@@ -100,6 +121,77 @@ export function Recommendations() {
             <div key={index}>
               <h1>{result.properties.name}</h1>
               <h3>{result.properties.address_line2}</h3>
+              <div>
+                Add to{" "}
+                <select
+                  name="trip_id"
+                  onChange={(e) => {
+                    setSelectedTrip(e.target.value);
+                    setShowForm(true);
+                    console.log(e.target.value);
+                  }}
+                >
+                  <option value="">Select a trip</option>
+                  {props.trips.map((trip) => (
+                    <option key={trip.id} value={trip.id}>
+                      {trip.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {selectedTrip && showForm ? (
+                <div>
+                  <form onSubmit={handleSubmit}>
+                    <div>
+                      <input
+                        value={selectedTrip}
+                        name="trip_id"
+                        type="hidden"
+                      />
+                    </div>
+                    <div>
+                      Name:{" "}
+                      <input
+                        defaultValue={result.properties.name}
+                        name="name"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      Address:{" "}
+                      <input
+                        defaultValue={result.properties.address_line2}
+                        name="address"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      Description: <input name="description" type="text" />
+                    </div>
+                    <div>
+                      Image URL: <input name="image_url" type="text" />
+                    </div>
+                    <div>
+                      Start Time:{" "}
+                      <input
+                        name="start_time"
+                        type="datetime-local"
+                        onChange={handleStartTimeChange}
+                      />
+                    </div>
+                    <div>
+                      End Time:{" "}
+                      <input
+                        name="end_time"
+                        type="datetime-local"
+                        defaultValue={startTime}
+                        onChange={handleEndTimeChange}
+                      />
+                    </div>
+                    <button type="submit">Submit</button>
+                  </form>
+                </div>
+              ) : null}
               <hr />
             </div>
           ) : null
