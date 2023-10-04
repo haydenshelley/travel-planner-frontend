@@ -47,6 +47,7 @@ export function Recommendations(props) {
 
   const handleMoreResults = () => {
     setCurrentPage(currentPage + 1);
+    setShowForm(false);
   };
 
   const handleRecommendations = () => {
@@ -56,6 +57,8 @@ export function Recommendations(props) {
       )
       .then((response) => {
         console.log(response.data);
+        setSelectedTrip("");
+        setShowForm(false);
         setResults(response.data.features);
         setCurrentPage(1);
         setResultsClicked(true);
@@ -188,7 +191,7 @@ export function Recommendations(props) {
                         onChange={handleEndTimeChange}
                       />
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Add Activity</button>
                   </form>
                 </div>
               ) : null}
