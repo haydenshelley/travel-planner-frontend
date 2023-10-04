@@ -70,14 +70,20 @@ export function Recommendations() {
         </select>
       </div>
       <button onClick={handleRecommendations}>Get Activities</button>
-      {results.map((result, index) =>
-        result.properties.name ? (
-          <div key={index}>
-            <h1>{result.properties.name}</h1>
-            <h3>{result.properties.address_line2}</h3>
-            <hr />
-          </div>
-        ) : null
+      {results.length === 0 ? (
+        <div>
+          <p>No results. Try another search!</p>
+        </div>
+      ) : (
+        results.map((result, index) =>
+          result.properties.name ? (
+            <div key={index}>
+              <h1>{result.properties.name}</h1>
+              <h3>{result.properties.address_line2}</h3>
+              <hr />
+            </div>
+          ) : null
+        )
       )}
     </div>
   );
