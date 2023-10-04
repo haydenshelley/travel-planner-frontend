@@ -63,6 +63,17 @@ export function Recommendations() {
         />
       </div>
       <div>
+        <label>Category:</label>
+        <select name="category" onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Select a category</option>
+          {categoryOptions.map((option, index) => (
+            <option key={index} value={option[0]}>
+              {option[1]}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
         <label>
           Within{" "}
           <select
@@ -77,17 +88,6 @@ export function Recommendations() {
           </select>{" "}
           mile(s)
         </label>
-      </div>
-      <div>
-        <label>Category:</label>
-        <select name="category" onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Select a category</option>
-          {categoryOptions.map((option, index) => (
-            <option key={index} value={option[0]}>
-              {option[1]}
-            </option>
-          ))}
-        </select>
       </div>
       <button onClick={handleRecommendations}>Get Activities</button>
       {resultsClicked && results.length === 0 ? (
