@@ -4,6 +4,12 @@ import axios from "axios";
 
 export function Recommendations() {
   const [results, setResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const resultsPerPage = 5;
+  const startIndex = (currentPage - 1) * resultsPerPage;
+  const endIndex = startIndex + resultsPerPage;
+  const displayedResults = results.slice(startIndex, endIndex);
+  const [resultsClicked, setResultsClicked] = useState(false);
   const [location, setLocation] = useState("");
   const [proximity, setProximity] = useState("");
   const [category, setCategory] = useState("");
@@ -27,6 +33,10 @@ export function Recommendations() {
     ["production.brewery", "Brewery"],
   ];
 
+  const handleMoreResults = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   const handleRecommendations = () => {
     axios
       .get(
@@ -35,6 +45,8 @@ export function Recommendations() {
       .then((response) => {
         console.log(response.data);
         setResults(response.data.features);
+        setCurrentPage(1);
+        setResultsClicked(true);
       });
   };
 
@@ -70,12 +82,12 @@ export function Recommendations() {
         </select>
       </div>
       <button onClick={handleRecommendations}>Get Activities</button>
-      {results.length === 0 ? (
+      {resultsClicked && results.length === 0 ? (
         <div>
           <p>No results. Try another search!</p>
         </div>
       ) : (
-        results.map((result, index) =>
+        displayedResults.map((result, index) =>
           result.properties.name ? (
             <div key={index}>
               <h1>{result.properties.name}</h1>
@@ -84,6 +96,9 @@ export function Recommendations() {
             </div>
           ) : null
         )
+      )}
+      {results.length > endIndex && (
+        <button onClick={handleMoreResults}>More Recommendations</button>
       )}
     </div>
   );
