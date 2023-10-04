@@ -63,12 +63,20 @@ export function Recommendations() {
         />
       </div>
       <div>
-        <label>Proximity:</label>
-        <input
-          type="text"
-          name="proximity"
-          onChange={(e) => setProximity(e.target.value)}
-        />
+        <label>
+          Within{" "}
+          <select
+            name="proximity"
+            onChange={(e) => setProximity(e.target.value)}
+          >
+            <option value="1609.34">1</option>
+            <option value="8046.72">5</option>
+            <option value="16093.4">10</option>
+            <option value="24140.2">15</option>
+            <option value="32186.9">20</option>
+          </select>{" "}
+          mile(s)
+        </label>
       </div>
       <div>
         <label>Category:</label>
