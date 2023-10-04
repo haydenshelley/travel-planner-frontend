@@ -1,5 +1,5 @@
 import { Header } from "./Header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 export function Recommendations() {
@@ -7,6 +7,25 @@ export function Recommendations() {
   const [location, setLocation] = useState("");
   const [proximity, setProximity] = useState("");
   const [category, setCategory] = useState("");
+  const categoryOptions = [
+    ["catering.restaurant", "Restuarant(All)"],
+    ["catering.restaurant.burger", "Restuarant(Burger)"],
+    ["catering.restaurant.pizza", "Restuarant(Pizza)"],
+    ["catering.restaurant.sandwich", "Restuarant(Sandwich)"],
+    ["catering.restaurant.mexican", "Restuarant(Mexican)"],
+    ["catering.restaurant.asian", "Restuarant(Asian)"],
+    ["catering.restaurant.american", "Restuarant(American)"],
+    ["catering.fast_food", "Restuarant(Fast Food)"],
+    ["catering.cafe.coffee_shop", "Restuarant(Cafe)"],
+    ["catering.cafe.ice_cream", "Restuarant(Ice Cream)"],
+    ["entertainment.museum", "Entertainment(Museum)"],
+    ["entertainment.aquarium", "Entertainment(Aquarium)"],
+    ["entertainment.cinema", "Entertainment(Movie Theater)"],
+    ["entertainment.bowling_alley", "Entertainment(Bowling)"],
+    ["pet.dog_park", "Dog Park"],
+    ["tourism.attraction", "Tourism Sites"],
+    ["production.brewery", "Brewery"],
+  ];
 
   const handleRecommendations = () => {
     axios
@@ -41,20 +60,25 @@ export function Recommendations() {
       </div>
       <div>
         <label>Category:</label>
-        <input
-          type="text"
-          name="category"
-          onChange={(e) => setCategory(e.target.value)}
-        />
+        <select name="category" onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Select a category</option>
+          {categoryOptions.map((option, index) => (
+            <option key={index} value={option[0]}>
+              {option[1]}
+            </option>
+          ))}
+        </select>
       </div>
       <button onClick={handleRecommendations}>Get Activities</button>
-      {results.map((result, index) => (
-        <div key={index}>
-          <h1>{result.properties.name}</h1>
-          <h3>{result.properties.address_line2}</h3>
-          <hr />
-        </div>
-      ))}
+      {results.map((result, index) =>
+        result.properties.name ? (
+          <div key={index}>
+            <h1>{result.properties.name}</h1>
+            <h3>{result.properties.address_line2}</h3>
+            <hr />
+          </div>
+        ) : null
+      )}
     </div>
   );
 }
