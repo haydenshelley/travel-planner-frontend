@@ -14,7 +14,7 @@ export function Recommendations(props) {
   const [proximity, setProximity] = useState("");
   const [category, setCategory] = useState("");
   const [selectedTrip, setSelectedTrip] = useState("");
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(null);
   const categoryOptions = [
     ["catering.restaurant", "Restuarant(All)"],
     ["catering.restaurant.burger", "Restuarant(Burger)"],
@@ -47,7 +47,8 @@ export function Recommendations(props) {
 
   const handleMoreResults = () => {
     setCurrentPage(currentPage + 1);
-    setShowForm(false);
+    setShowForm(null);
+    setSelectedTrip("");
   };
 
   const handleRecommendations = () => {
@@ -58,7 +59,7 @@ export function Recommendations(props) {
       .then((response) => {
         console.log(response.data);
         setSelectedTrip("");
-        setShowForm(false);
+        setShowForm(null);
         setResults(response.data.features);
         setCurrentPage(1);
         setResultsClicked(true);
@@ -130,8 +131,7 @@ export function Recommendations(props) {
                   name="trip_id"
                   onChange={(e) => {
                     setSelectedTrip(e.target.value);
-                    setShowForm(true);
-                    console.log(e.target.value);
+                    setShowForm(index);
                   }}
                 >
                   <option value="">Select a trip</option>
@@ -142,7 +142,7 @@ export function Recommendations(props) {
                   ))}
                 </select>
               </div>
-              {selectedTrip && showForm ? (
+              {selectedTrip && showForm === index ? (
                 <div>
                   <form onSubmit={handleSubmit}>
                     <div>
