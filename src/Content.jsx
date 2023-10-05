@@ -11,10 +11,13 @@ import { PlacesNew } from "./PlacesNew";
 import { PlacesEdit } from "./PlacesEdit";
 import { TripsEdit } from "./TripsEdit";
 import { Recommendations } from "./Recommendations";
+import { Invitations } from "./Invitations";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
+  const [invitations, setInvitations] = useState([]);
   const [user, setUser] = useState("");
+  const [userId, setUserId] = useState("");
 
   const handleTripsIndex = () => {
     console.log("handleTripsIndex");
@@ -22,6 +25,15 @@ export function Content() {
       console.log(response.data);
       setTrips(response.data);
       setUser(response.data[0].user.name);
+      setUserId(response.data[0].user.id);
+    });
+  };
+
+  const handleInvitationsIndex = () => {
+    console.log("handleInvitationsIndex");
+    axios.get("http://localhost:3000/invitations.json").then((response) => {
+      console.log(response.data);
+      setInvitations(response.data);
     });
   };
 
@@ -42,6 +54,7 @@ export function Content() {
   };
 
   useEffect(handleTripsIndex, []);
+  useEffect(handleInvitationsIndex, []);
 
   return (
     <div>
@@ -71,6 +84,10 @@ export function Content() {
           element={
             <Recommendations trips={trips} onCreatePlace={handleCreatePlace} />
           }
+        />
+        <Route
+          path="/invitations"
+          element={<Invitations invitations={invitations} userId={userId} />}
         />
       </Routes>
     </div>

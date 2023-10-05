@@ -7,7 +7,8 @@ export function Header() {
       <nav>
         <Link to={"/trips"}>My Trips</Link> | |{" "}
         <Link to={"/trips/new"}>New Trip</Link> | |{" "}
-        <Link to={"/recommendations"}>Recommendations</Link> | | <LogoutLink />
+        <Link to={"/recommendations"}>Recommendations</Link> | |{" "}
+        <Link to={"/invitations"}>Invitations</Link> | | <LogoutLink />
       </nav>
     </header>
   );
