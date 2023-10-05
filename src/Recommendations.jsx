@@ -132,12 +132,18 @@ export function Recommendations(props) {
                   onChange={(e) => {
                     setSelectedTrip(e.target.value);
                     setShowForm(index);
+                    console.log(index);
                   }}
                 >
                   <option value="">Select a trip</option>
                   {props.trips.map((trip) => (
                     <option key={trip.id} value={trip.id}>
                       {trip.title}
+                      {"("}
+                      {trip.end_time}
+                      {" - "}
+                      {trip.start_time}
+                      {")"}
                     </option>
                   ))}
                 </select>
