@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Header } from "./Header";
-import axios from "axios";
+import axios, { all } from "axios";
 import { useState } from "react";
 
 export function TripsIndex(props) {
@@ -8,6 +8,7 @@ export function TripsIndex(props) {
     (a, b) => new Date(a.start_time) - new Date(b.start_time)
   );
   const [selectedFriendId, setSelectedFriendId] = useState("");
+  const [selectedTripId, setSelectedTripId] = useState("");
   const [friendInvited, setFriendInvited] = useState(false);
 
   const handleDestroyTrip = (trip) => {
@@ -16,11 +17,17 @@ export function TripsIndex(props) {
       .then(window.location.reload(true));
   };
 
-  const handleInviteFriend = (tripId) => {
+  const handleInviteFriend = () => {
     axios
-      .post(`http://localhost:3000/trips/${trip.id}/travelers`, {
-        user_id: selectedFriendId,
-      })
+      .post(
+        `http://localhost:3000/trips/${selectedTripId}/travelers.json`,
+        { user_id: selectedFriendId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         console.log("Friend invited:", response.data);
         setSelectedFriendId("");
@@ -30,6 +37,11 @@ export function TripsIndex(props) {
         console.error("Error inviting friend:", error);
       });
   };
+
+  let divContent = null;
+  if (friendInvited) {
+    divContent = <p>Friend Invited!</p>;
+  }
 
   return (
     <div>
@@ -55,6 +67,7 @@ export function TripsIndex(props) {
                 <select
                   onChange={(e) => {
                     setSelectedFriendId(e.target.value);
+                    setSelectedTripId(trip.id);
                     console.log("Selected Friend ID:", e.target.value);
                     console.log("Current Trip ID:", trip.id);
                   }}
@@ -67,19 +80,10 @@ export function TripsIndex(props) {
                     </option>
                   ))}
                 </select>
-                <button onClick={() => handleInviteFriend(trip.id)}>
+                <button onClick={() => handleInviteFriend()}>
                   Invite Friend
                 </button>
-                {friendInvited && (
-                  <p>
-                    Invited:{" "}
-                    {
-                      props.allUsers.find(
-                        (user) => user.id === selectedFriendId
-                      )?.name
-                    }
-                  </p>
-                )}
+                <div>{divContent}</div>
               </div>
               <Link to={`/trips/${trip.id}/edit`}>Edit Trip</Link>
               <br />
