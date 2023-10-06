@@ -8,7 +8,8 @@ export function Header() {
         <Link to={"/trips"}>My Trips</Link> | |{" "}
         <Link to={"/trips/new"}>New Trip</Link> | |{" "}
         <Link to={"/recommendations"}>Recommendations</Link> | |{" "}
-        <Link to={"/invitations"}>Invitations</Link> | | <LogoutLink />
+        <Link to={"/invitations"}>Invitations</Link> | |{" "}
+        <Link to={"/tagalong"}>Tagalong</Link> | | <LogoutLink />
       </nav>
     </header>
   );

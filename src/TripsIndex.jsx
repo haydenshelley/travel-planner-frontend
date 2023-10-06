@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Header } from "./Header";
-import axios, { all } from "axios";
+import axios from "axios";
 import { useState } from "react";
 
 export function TripsIndex(props) {
@@ -19,15 +19,9 @@ export function TripsIndex(props) {
 
   const handleInviteFriend = () => {
     axios
-      .post(
-        `http://localhost:3000/trips/${selectedTripId}/travelers.json`,
-        { user_id: selectedFriendId },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post(`http://localhost:3000/trips/${selectedTripId}/travelers.json`, {
+        user_id: selectedFriendId,
+      })
       .then((response) => {
         console.log("Friend invited:", response.data);
         setSelectedFriendId("");
@@ -61,7 +55,6 @@ export function TripsIndex(props) {
               <img width="400" height="300" src={trip.image_url} />
               <p>Arrive: {trip.start_time}</p>
               <p>Depart: {trip.end_time}</p>
-              <p>Invite Friends</p>
               <div>
                 <label>Invite Friends:</label>
                 <select

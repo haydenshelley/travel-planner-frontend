@@ -12,9 +12,11 @@ import { PlacesEdit } from "./PlacesEdit";
 import { TripsEdit } from "./TripsEdit";
 import { Recommendations } from "./Recommendations";
 import { Invitations } from "./Invitations";
+import { TagalongIndex } from "./TagalongIndex";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
+  const [tagalongTrips, setTagalongTrips] = useState([]);
   const [invitations, setInvitations] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState("");
@@ -46,6 +48,14 @@ export function Content() {
     });
   };
 
+  const handleTagalongIndex = () => {
+    console.log("handleTagalongIndex");
+    axios.get("http://localhost:3000/tagalong.json").then((response) => {
+      console.log(response.data);
+      setTagalongTrips(response.data);
+    });
+  };
+
   const handleCreateTrip = (params, successCallback) => {
     console.log("handleCreateTrip", params);
     axios.post("http://localhost:3000/trips.json", params).then((response) => {
@@ -65,6 +75,7 @@ export function Content() {
   useEffect(handleTripsIndex, []);
   useEffect(handleInvitationsIndex, []);
   useEffect(handleUsersIndex, []);
+  useEffect(handleTagalongIndex, []);
 
   return (
     <div>
@@ -98,6 +109,10 @@ export function Content() {
         <Route
           path="/invitations"
           element={<Invitations invitations={invitations} userId={userId} />}
+        />
+        <Route
+          path="/tagalong"
+          element={<TagalongIndex tagalongTrips={tagalongTrips} />}
         />
       </Routes>
     </div>
