@@ -10,7 +10,6 @@ export function TagalongIndex(props) {
   return (
     <div>
       <Header />
-      <button onClick={() => console.log(props.allUsers)}>Test</button>
       <h1>You're Tagging Along On</h1>
       {props.tagalongTrips.map((tagalong) => (
         <div key={tagalong.id}>

@@ -1,3 +1,8 @@
 html {
   scroll-behavior: smooth;
 }
+
+#logoutLink {
+  text-decoration: none;
+  color: inherit;
+}
