@@ -10,6 +10,7 @@ html {
 
 .main-content {
   flex-grow: 1;
+  text-align: center;
 }
 
 #logoutLink {
