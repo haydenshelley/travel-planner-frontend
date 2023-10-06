@@ -6,8 +6,12 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Content />
-        <Footer />
+        <div className="wrapper">
+          <div className="main-content">
+            <Content />
+          </div>
+          <Footer />
+        </div>
       </BrowserRouter>
     </div>
   );

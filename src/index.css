@@ -2,6 +2,16 @@ html {
   scroll-behavior: smooth;
 }
 
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
 #logoutLink {
   text-decoration: none;
   color: inherit;
