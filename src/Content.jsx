@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
@@ -16,6 +16,7 @@ import { TagalongIndex } from "./TagalongIndex";
 import { TagalongShow } from "./TagalongShow";
 
 export function Content() {
+  const jwt = localStorage.getItem("jwt");
   const [trips, setTrips] = useState([]);
   const [tagalongTrips, setTagalongTrips] = useState([]);
   const [invitations, setInvitations] = useState([]);
@@ -81,7 +82,10 @@ export function Content() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/"
+          element={jwt ? <Navigate to="/trips" /> : <LandingPage />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route
