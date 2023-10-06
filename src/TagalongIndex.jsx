@@ -4,7 +4,7 @@ export function TagalongIndex(props) {
   return (
     <div>
       <Header />
-      <h1>Your Accepted Trips</h1>
+      <h1>You're Tagging Along On</h1>
       {props.tagalongTrips.map((tagalong) => (
         <div key={tagalong.id}>
           <h2>{tagalong.trip.title}</h2>

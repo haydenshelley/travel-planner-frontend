@@ -30,6 +30,22 @@ export function Invitations(props) {
     }
   };
 
+  const handleDeclineInvitation = (invitation) => {
+    const traveler = invitation.travelers.find(
+      (traveler) => traveler.user_id === currentUserId && !traveler.accepted
+    );
+    const travelerId = traveler.id;
+    console.log(travelerId);
+    if (travelerId)
+      axios
+        .delete("http://localhost:3000/invitations/decline.json", {
+          data: { traveler_id: travelerId },
+        })
+        .then(() => {
+          window.location.reload(true);
+        });
+  };
+
   return (
     <div>
       <Header />
@@ -42,6 +58,9 @@ export function Invitations(props) {
           <p>Depart: {invitation.end_time}</p>
           <button onClick={() => handleAcceptInvitation(invitation)}>
             Accept
+          </button>
+          <button onClick={() => handleDeclineInvitation(invitation)}>
+            Decline
           </button>
           <hr />
         </div>
