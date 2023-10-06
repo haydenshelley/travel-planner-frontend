@@ -113,9 +113,14 @@ export function Content() {
         />
         <Route
           path="/tagalong"
-          element={<TagalongIndex tagalongTrips={tagalongTrips} />}
+          element={
+            <TagalongIndex tagalongTrips={tagalongTrips} allUsers={allUsers} />
+          }
         />
-        <Route path="/tagalong/:id" element={<TagalongShow />} />
+        <Route
+          path="/tagalong/:id"
+          element={<TagalongShow allUsers={allUsers} />}
+        />
       </Routes>
     </div>
   );
