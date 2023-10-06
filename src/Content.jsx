@@ -13,6 +13,7 @@ import { TripsEdit } from "./TripsEdit";
 import { Recommendations } from "./Recommendations";
 import { Invitations } from "./Invitations";
 import { TagalongIndex } from "./TagalongIndex";
+import { TagalongShow } from "./TagalongShow";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -114,6 +115,7 @@ export function Content() {
           path="/tagalong"
           element={<TagalongIndex tagalongTrips={tagalongTrips} />}
         />
+        <Route path="/tagalong/:id" element={<TagalongShow />} />
       </Routes>
     </div>
   );
