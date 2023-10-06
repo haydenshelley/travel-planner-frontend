@@ -1,18 +1,17 @@
 import axios from "axios";
-import { useState } from "react";
 import { Header } from "./Header";
 
 export function Invitations(props) {
   const currentUserId = props.userId;
 
   const handleAcceptInvitation = (invitation) => {
-    const traveler = invitation.travelers.find(
-      (traveler) => traveler.user_id === currentUserId
+    const traveler = invitation.travelers.filter(
+      (traveler) =>
+        traveler.user_id === currentUserId && traveler.accepted === false
     );
-
-    if (traveler) {
-      const travelerId = traveler.id;
-
+    const travelerId = traveler[0].id;
+    console.log(travelerId);
+    if (travelerId) {
       axios
         .patch(
           `http://localhost:3000/trips/${invitation.id}/travelers/${travelerId}.json`,
@@ -25,6 +24,8 @@ export function Invitations(props) {
         })
         .catch((error) => {
           console.error("Error accepting invitation:", error);
+          console.log(invitation.id);
+          console.log(travelerId);
         });
     }
   };

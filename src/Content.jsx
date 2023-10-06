@@ -16,8 +16,17 @@ import { Invitations } from "./Invitations";
 export function Content() {
   const [trips, setTrips] = useState([]);
   const [invitations, setInvitations] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
+
+  const handleUsersIndex = () => {
+    console.log("handleUsersIndex");
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      console.log(response.data);
+      setAllUsers(response.data);
+    });
+  };
 
   const handleTripsIndex = () => {
     console.log("handleTripsIndex");
@@ -55,6 +64,7 @@ export function Content() {
 
   useEffect(handleTripsIndex, []);
   useEffect(handleInvitationsIndex, []);
+  useEffect(handleUsersIndex, []);
 
   return (
     <div>
@@ -64,7 +74,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/trips"
-          element={<TripsIndex trips={trips} user={user} />}
+          element={<TripsIndex trips={trips} user={user} allUsers={allUsers} />}
         />
         <Route path="/trips/:id" element={<TripsShow />} />
         <Route
