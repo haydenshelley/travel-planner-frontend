@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="bg-dark py-1 mt-2">
+    <footer id="footer" className="py-1">
       <div className="container text-center">
         <a
           href="https://github.com/haydenshelley"

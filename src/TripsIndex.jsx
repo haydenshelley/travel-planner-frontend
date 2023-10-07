@@ -83,6 +83,7 @@ export function TripsIndex(props) {
               <button onClick={() => handleDestroyTrip(trip)}>
                 Cancel Trip
               </button>
+              <hr />
             </div>
           ))}
         </div>

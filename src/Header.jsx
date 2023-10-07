@@ -10,13 +10,10 @@ export function Header() {
 
   return (
     <header>
-      <nav
-        className="navbar navbar-expand-lg bg-dark border-bottom border-body"
-        data-bs-theme="dark"
-      >
+      <nav className="navbar navbar-expand-lg border-bottom border-body">
         <div className="container-fluid">
           <a className="navbar-brand" href="/trips">
-            My Trips
+            waypoint
           </a>
           <button
             className="navbar-toggler"
@@ -33,27 +30,27 @@ export function Header() {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a className="nav-link" aria-current="page" href="/trips/new">
-                  New Trip
+                  new trip
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/recommendations">
-                  Recommendations
+                  recommendations
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/invitations">
-                  Invitations
+                  invitations
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/tagalong">
-                  Tagalong
+                  tagalong
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={handleClick} href="#">
-                  Logout
+                  logout
                 </a>
               </li>
             </ul>
