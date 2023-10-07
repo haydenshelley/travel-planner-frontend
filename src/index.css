@@ -63,6 +63,18 @@ html {
   margin: 0;
 }
 
+.landing-page-objects {
+  text-align: center;
+  padding: 20px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+}
+
+.landing-page-objects h1 {
+  font-size: 80px;
+}
+
 #footer {
   background-color: lightblue; 
 }
@@ -70,4 +82,19 @@ html {
 #logoutLink {
   text-decoration: none;
   color: inherit;
+}
+
+#login {
+  background-image: url('https://t4.ftcdn.net/jpg/06/34/42/45/360_F_634424565_ewN98sv840wBqzlQQLjLYMG54D4BDULL.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  color: white;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh;
+  margin: 0;
 }

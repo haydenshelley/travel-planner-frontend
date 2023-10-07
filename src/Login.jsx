@@ -36,20 +36,17 @@ export function Login() {
   };
 
   return (
-    <div
-      id="login"
-      className="container d-flex justify-content-center align-items-center vh-100"
-    >
+    <div id="login">
       <div className="card" style={{ width: "400px" }}>
         <div
           className="card-body"
           style={{ maxHeight: "800px", overflowY: "auto" }}
         >
-          <h1 className="card-title text-center">Login</h1>
+          <h1 className="card-title text-center">log in</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email:
+                email:
               </label>
               <input
                 name="email"
@@ -61,7 +58,7 @@ export function Login() {
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
-                Password:
+                password:
               </label>
               <input
                 name="password"
@@ -72,21 +69,21 @@ export function Login() {
               />
             </div>
             <div className="d-grid gap-2">
-              <button type="submit" className="btn btn-primary">
-                Login
+              <button type="submit" className="btn custom-color">
+                log in
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn custom-color"
                 onClick={handleCancel}
               >
-                Cancel
+                cancel
               </button>
             </div>
           </form>
           {isErrorVisible && (
             <div className="mt-3 alert alert-danger">
-              <h5>Error:</h5>
+              <h5>error:</h5>
               <ul>
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>
