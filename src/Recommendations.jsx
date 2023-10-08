@@ -172,6 +172,13 @@ export function Recommendations(props) {
                       {selectedTrip && showForm === index ? (
                         <div>
                           <form onSubmit={handleSubmit}>
+                            <div>
+                              <input
+                                value={selectedTrip}
+                                name="trip_id"
+                                type="hidden"
+                              />
+                            </div>
                             <div className="mb-3">
                               <label htmlFor="name" className="form-label">
                                 name:
