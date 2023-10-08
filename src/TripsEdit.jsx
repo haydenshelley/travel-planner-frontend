@@ -33,29 +33,72 @@ export function TripsEdit() {
   return (
     <div>
       <Header />
-      <h1>Editing {trip.title}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Title: <input defaultValue={trip.title} name="title" type="text" />
+      <div
+        id="edit-trip"
+        className="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div className="card" style={{ width: "400px" }}>
+          <div
+            className="card-body"
+            style={{ maxHeight: "800px", overflowY: "auto" }}
+          >
+            <h1 className="card-title text-center">Editing {trip.title}</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="title" className="form-label">
+                  Title:
+                </label>
+                <input
+                  defaultValue={trip.title}
+                  name="title"
+                  type="text"
+                  className="form-control"
+                  id="title"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="image_url" className="form-label">
+                  Image URL:
+                </label>
+                <input
+                  defaultValue={trip.image_url}
+                  name="image_url"
+                  type="text"
+                  className="form-control"
+                  id="image_url"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="start_time" className="form-label">
+                  Start Date:
+                </label>
+                <input
+                  defaultValue={startTime}
+                  name="start_time"
+                  type="datetime-local"
+                  className="form-control"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="end_time" className="form-label">
+                  End Date:
+                </label>
+                <input
+                  defaultValue={endTime}
+                  name="end_time"
+                  type="datetime-local"
+                  className="form-control"
+                />
+              </div>
+              <div className="d-grid gap-2">
+                <button type="submit" className="btn custom-color">
+                  Update Trip
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          Image URL:{" "}
-          <input defaultValue={trip.image_url} name="image_url" type="text" />
-        </div>
-        <div>
-          Start Date:{" "}
-          <input
-            defaultValue={startTime}
-            name="start_time"
-            type="datetime-local"
-          />
-        </div>
-        <div>
-          End Date:{" "}
-          <input defaultValue={endTime} name="end_time" type="datetime-local" />
-        </div>
-        <button type="submit">Update Trip</button>
-      </form>
+      </div>
     </div>
   );
 }

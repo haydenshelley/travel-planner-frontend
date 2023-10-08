@@ -91,7 +91,10 @@ export function TripsIndex(props) {
                     <div>{divContent}</div>
                   </div>
                   <div className="horizontal-buttons">
-                    <a className="btn custom-color" href={`/trips/${trip.id}`}>
+                    <a
+                      className="btn custom-color"
+                      href={`/trips/${trip.id}/edit`}
+                    >
                       Edit Trip
                     </a>
                     <button
