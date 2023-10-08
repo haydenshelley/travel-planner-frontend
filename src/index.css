@@ -43,11 +43,6 @@ html {
   color: black;
 }
 
-.horizontal-buttons {
-  display: flex;
-  justify-content: center;
-}
-
 .landingPage {
   background-image: url('https://t4.ftcdn.net/jpg/06/34/42/45/360_F_634424565_ewN98sv840wBqzlQQLjLYMG54D4BDULL.jpg');
   background-size: cover;

@@ -94,7 +94,6 @@ export function TripsIndex(props) {
                     <a className="btn custom-color" href={`/trips/${trip.id}`}>
                       Edit Trip
                     </a>
-                    <br />
                     <button
                       className="btn custom-color"
                       onClick={() => handleDestroyTrip(trip)}
