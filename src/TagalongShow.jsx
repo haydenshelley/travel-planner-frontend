@@ -11,6 +11,12 @@ export function TagalongShow(props) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+  const formatTime = (timeString) => {
+    const parts = timeString.split(" ");
+    const [hour, minute] = parts[0].split(":");
+    const ampm = parts[1].toLowerCase();
+    return `${parseInt(hour, 10)}:${minute} ${ampm}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,21 +48,31 @@ export function TagalongShow(props) {
   return (
     <div>
       <Header />
-      <h1>{trip.trip.title} Activities</h1>
-      <h2>Host: {host}</h2>
+      <h1>
+        {host?.toLowerCase()}'s {trip.trip.title?.toLowerCase()} activities
+      </h1>
       <h4>
         {formatDate(trip.trip.start_time)} - {formatDate(trip.trip.end_time)}
       </h4>
-      {trip.places.map((place) => (
-        <div key={place.id}>
-          <h3>{place.name}</h3>
-          <p>{place.address}</p>
-          <img width="400" height="300" src={place.image_url} />
-          <p>Date: {place.date}</p>
-          <p>Starts: {place.start}</p>
-          <p>Ends: {place.end}</p>
-        </div>
-      ))}
+      <div className="card-container">
+        {trip.places.map((place) => (
+          <div className="card" style={{ width: "25rem" }} key={place.id}>
+            <img
+              className="card-img-top"
+              src={place.image_url}
+              alt="Trip Image"
+            />
+            <div className="card-body">
+              <h3 className="card-text">{place.name}</h3>
+              <p className="card-text">{place.address}</p>
+              <p className="card-text">{place.date}</p>
+              <p className="card-text">
+                {formatTime(place.start)} - {formatTime(place.end)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
