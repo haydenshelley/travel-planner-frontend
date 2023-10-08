@@ -37,11 +37,11 @@ export function Signup() {
           className="card-body"
           style={{ maxHeight: "800px", overflowY: "auto" }}
         >
-          <h1 className="card-title text-center">Signup</h1>
+          <h1 className="card-title text-center">signup</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
-                Name:
+                name:
               </label>
               <input
                 name="name"
@@ -53,7 +53,7 @@ export function Signup() {
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email:
+                email:
               </label>
               <input
                 name="email"
@@ -65,7 +65,7 @@ export function Signup() {
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
-                Password:
+                password:
               </label>
               <input
                 name="password"
@@ -77,7 +77,7 @@ export function Signup() {
             </div>
             <div className="mb-3">
               <label htmlFor="password_confirmation" className="form-label">
-                Retype Password:
+                retype password:
               </label>
               <input
                 name="password_confirmation"
@@ -88,21 +88,21 @@ export function Signup() {
               />
             </div>
             <div className="d-grid gap-2">
-              <button type="submit" className="btn btn-primary">
-                Signup
+              <button type="submit" className="btn custom-color">
+                signup
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn custom-color"
                 onClick={handleCancel}
               >
-                Cancel
+                cancel
               </button>
             </div>
           </form>
           {isErrorVisible && (
             <div className="mt-3 alert alert-danger">
-              <h5>Error:</h5>
+              <h5>error:</h5>
               <ul>
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>

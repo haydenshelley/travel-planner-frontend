@@ -160,7 +160,7 @@ export function Recommendations(props) {
                           {props.trips.map((trip) => (
                             <option key={trip.id} value={trip.id}>
                               {trip.title.toLowerCase()}
-                              {"("}
+                              {" ("}
                               {trip.end_time.toLowerCase()}
                               {" - "}
                               {trip.start_time.toLowerCase()}
