@@ -23,33 +23,75 @@ export function TripsNew(props) {
   return (
     <div>
       <Header />
-      <h1>New Trip</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Title: <input name="title" type="text" />
+      <div
+        id="new-trip"
+        className="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div className="card" style={{ width: "400px" }}>
+          <div
+            className="card-body"
+            style={{ maxHeight: "800px", overflowY: "auto" }}
+          >
+            <h1 className="card-title text-center">New Trip</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="title" className="form-label">
+                  Title:
+                </label>
+                <input
+                  name="title"
+                  type="text"
+                  className="form-control"
+                  id="title"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="image_url" className="form-label">
+                  Image URL:
+                </label>
+                <input
+                  name="image_url"
+                  type="text"
+                  className="form-control"
+                  id="image_url"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="start_time" className="form-label">
+                  Start Date:
+                </label>
+                <input
+                  name="start_time"
+                  type="datetime-local"
+                  className="form-control"
+                  onChange={handleStartDateChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="end_time" className="form-label">
+                  End Date:
+                </label>
+                <input
+                  name="end_time"
+                  type="datetime-local"
+                  defaultValue={startDate}
+                  className="form-control"
+                  onChange={handleEndDateChange}
+                  required
+                />
+              </div>
+              <div className="d-grid gap-2">
+                <button type="submit" className="btn btn-primary">
+                  Create Trip
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          Image URL: <input name="image_url" type="text" />
-        </div>
-        <div>
-          Start Date:{" "}
-          <input
-            name="start_time"
-            type="datetime-local"
-            onChange={handleStartDateChange}
-          />
-        </div>
-        <div>
-          End Date:{" "}
-          <input
-            name="end_time"
-            type="datetime-local"
-            defaultValue={startDate}
-            onChange={handleEndDateChange}
-          />
-        </div>
-        <button type="submit">Create Trip</button>
-      </form>
+      </div>
     </div>
   );
 }
