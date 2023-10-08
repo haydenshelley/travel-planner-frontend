@@ -120,11 +120,7 @@ export function PlacesEdit() {
             </form>
           </div>
         </div>
-        <Link
-          className="btn custom-color"
-          to={`/trips/${place.trip_id}`}
-          className="mt-3"
-        >
+        <Link to={`/trips/${place.trip_id}`} className="btn custom-color mt-3">
           Back to Trip
         </Link>
       </div>
