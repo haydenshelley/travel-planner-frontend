@@ -9,7 +9,11 @@ export function TagalongShow(props) {
   const [host, setHost] = useState(null);
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const formattedDate = new Date(dateString).toLocaleDateString(
+      undefined,
+      options
+    );
+    return formattedDate.replace(/\b(\w+)\b/g, (match) => match.toLowerCase());
   };
   const formatTime = (timeString) => {
     const parts = timeString.split(" ");
@@ -63,9 +67,9 @@ export function TagalongShow(props) {
               alt="Trip Image"
             />
             <div className="card-body">
-              <h3 className="card-text">{place.name}</h3>
-              <p className="card-text">{place.address}</p>
-              <p className="card-text">{place.date}</p>
+              <h3 className="card-text">{place.name?.toLowerCase()}</h3>
+              <p className="card-text">{place.address?.toLowerCase()}</p>
+              <p className="card-text">{place.date?.toLowerCase()}</p>
               <p className="card-text">
                 {formatTime(place.start)} - {formatTime(place.end)}
               </p>

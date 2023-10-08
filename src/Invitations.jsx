@@ -30,6 +30,11 @@ export function Invitations(props) {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   const handleDeclineInvitation = (invitation) => {
     const traveler = invitation.travelers.find(
       (traveler) => traveler.user_id === currentUserId && !traveler.accepted
@@ -49,22 +54,38 @@ export function Invitations(props) {
   return (
     <div>
       <Header />
-      <h1>Invitations</h1>
-      {props.invitations.map((invitation) => (
-        <div key={invitation.id}>
-          <h1>{invitation.title}</h1>
-          <h3>Invited by: {invitation.user_name}</h3>
-          <p>Arrive: {invitation.start_time}</p>
-          <p>Depart: {invitation.end_time}</p>
-          <button onClick={() => handleAcceptInvitation(invitation)}>
-            Accept
-          </button>
-          <button onClick={() => handleDeclineInvitation(invitation)}>
-            Decline
-          </button>
-          <hr />
-        </div>
-      ))}
+      <h1>invitations</h1>
+      <div className="card-container">
+        {props.invitations.map((invitation) => (
+          <div className="card" style={{ width: "25rem" }} key={invitation.id}>
+            <img
+              src={invitation.image_url}
+              className="card-img-top"
+              alt="Trip Image"
+            />
+            <div className="card-body">
+              <h1 className="card-title">{invitation.title}</h1>
+              <p className="card-text">
+                {formatDate(invitation.start_time)} -{" "}
+                {formatDate(invitation.end_time)}
+              </p>
+              <h3 className="card-text">Host: {invitation.user_name}</h3>
+              <button
+                className="btn custom-color"
+                onClick={() => handleAcceptInvitation(invitation)}
+              >
+                Accept
+              </button>
+              <button
+                className="btn custom-color"
+                onClick={() => handleDeclineInvitation(invitation)}
+              >
+                Decline
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

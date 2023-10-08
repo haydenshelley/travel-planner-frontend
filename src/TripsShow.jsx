@@ -44,7 +44,7 @@ export function TripsShow() {
       <Header />
       <h1>{trip.title?.toLowerCase()} activities</h1>
       <h4>
-        {trip.start_time} - {trip.end_time}
+        {trip.start_time?.toLowerCase()} - {trip.end_time?.toLowerCase()}
       </h4>
       <Link className="btn custom-color" to={`/trips/${id}/places/new`}>
         new activity
@@ -58,24 +58,24 @@ export function TripsShow() {
               alt="trip image"
             />
             <div className="card-body">
-              <h2 className="card-title">{place.name}</h2>
-              <p className="card-text">{place.address}</p>
-              <p className="card-text">{place.date}</p>
+              <h2 className="card-title">{place.name.toLowerCase()}</h2>
+              <p className="card-text">{place.address.toLowerCase()}</p>
+              <p className="card-text">{place.date.toLowerCase()}</p>
               <p className="card-text">
                 {formatTime(place.start)} - {formatTime(place.end)}
               </p>
-              <p className="card-text">{place.description}</p>
+              <p className="card-text">{place.description.toLowerCase()}</p>
               <Link
                 className="btn custom-color"
                 to={`/trips/places/${place.id}/edit`}
               >
-                Edit Activity
+                edit activity
               </Link>
               <button
                 className="btn custom-color"
                 onClick={() => handleDestroyPlace(place)}
               >
-                Cancel Activity
+                cancel activity
               </button>
             </div>
           </div>

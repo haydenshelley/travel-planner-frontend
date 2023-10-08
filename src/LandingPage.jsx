@@ -4,7 +4,7 @@ export function LandingPage() {
   return (
     <div className="landingPage">
       <div className="landing-page-objects">
-        <h1>waypoint</h1>
+        <h1 id="landing-page-title">waypoint</h1>
         <h4>welcome to your next adventure</h4>
         <h6>log in or register to begin</h6>
         <Link className="btn custom-color" to="/login">

@@ -42,11 +42,13 @@ export function TripsEdit() {
             className="card-body"
             style={{ maxHeight: "800px", overflowY: "auto" }}
           >
-            <h1 className="card-title text-center">Editing {trip.title}</h1>
+            <h1 className="card-title text-center">
+              editing {trip.title?.toLowerCase()}
+            </h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">
-                  Title:
+                  title:
                 </label>
                 <input
                   defaultValue={trip.title}
@@ -58,7 +60,7 @@ export function TripsEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="image_url" className="form-label">
-                  Image URL:
+                  image:
                 </label>
                 <input
                   defaultValue={trip.image_url}
@@ -70,7 +72,7 @@ export function TripsEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="start_time" className="form-label">
-                  Start Date:
+                  start date:
                 </label>
                 <input
                   defaultValue={startTime}
@@ -81,7 +83,7 @@ export function TripsEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="end_time" className="form-label">
-                  End Date:
+                  end date:
                 </label>
                 <input
                   defaultValue={endTime}
@@ -92,7 +94,7 @@ export function TripsEdit() {
               </div>
               <div className="d-grid gap-2">
                 <button type="submit" className="btn custom-color">
-                  Update Trip
+                  update trip
                 </button>
               </div>
             </form>

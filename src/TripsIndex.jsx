@@ -42,8 +42,8 @@ export function TripsIndex(props) {
       <Header />
       {props.trips.length === 0 ? (
         <div>
-          <h1>No current trips</h1>
-          <Link to="/trips/new">Try creating a new trip!</Link>
+          <h1>no current trips</h1>
+          <Link to="/trips/new">try creating a new trip!</Link>
         </div>
       ) : (
         <div>
@@ -59,11 +59,12 @@ export function TripsIndex(props) {
                 <div className="card-body">
                   <h5 className="card-title">
                     <Link id="card-title" to={`/trips/${trip.id}`}>
-                      {trip.title}
+                      {trip.title.toLowerCase()}
                     </Link>
                   </h5>
                   <p className="card-text">
-                    {trip.start_time} - {trip.end_time}
+                    {trip.start_time.toLowerCase()} -{" "}
+                    {trip.end_time.toLowerCase()}
                   </p>
                   <div>
                     <select
@@ -75,7 +76,7 @@ export function TripsIndex(props) {
                       }}
                       value={selectedFriendId}
                     >
-                      <option value="">Invite a friend</option>
+                      <option value="">invite a friend</option>
                       {props.allUsers.map((user, index) => (
                         <option key={index} value={user.id}>
                           {user.name}
@@ -86,7 +87,7 @@ export function TripsIndex(props) {
                       className="btn custom-color"
                       onClick={() => handleInviteFriend()}
                     >
-                      Add Friend
+                      add friend
                     </button>
                     <div>{divContent}</div>
                   </div>
@@ -95,13 +96,13 @@ export function TripsIndex(props) {
                       className="btn custom-color"
                       href={`/trips/${trip.id}/edit`}
                     >
-                      Edit Trip
+                      edit trip
                     </a>
                     <button
                       className="btn custom-color"
                       onClick={() => handleDestroyTrip(trip)}
                     >
-                      Cancel Trip
+                      cancel trip
                     </button>
                   </div>
                 </div>

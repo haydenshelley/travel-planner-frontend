@@ -12,7 +12,7 @@ export function Header() {
     <header>
       <nav className="navbar navbar-expand-lg border-bottom border-body">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/trips">
+          <a id="navbar-logo" className="navbar-brand" href="/trips">
             waypoint
           </a>
           <button

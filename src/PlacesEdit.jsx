@@ -43,12 +43,12 @@ export function PlacesEdit() {
             style={{ maxHeight: "800px", overflowY: "auto" }}
           >
             <h1 className="card-title text-center">
-              Editing Activity: {place.title}
+              editing {place.name?.toLowerCase()}
             </h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
-                  Name:
+                  name:
                 </label>
                 <input
                   defaultValue={place.name}
@@ -59,7 +59,7 @@ export function PlacesEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="address" className="form-label">
-                  Address:
+                  address:
                 </label>
                 <input
                   defaultValue={place.address}
@@ -70,7 +70,7 @@ export function PlacesEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="description" className="form-label">
-                  Description:
+                  description:
                 </label>
                 <input
                   defaultValue={place.description}
@@ -81,7 +81,7 @@ export function PlacesEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="image_url" className="form-label">
-                  Image URL:
+                  image:
                 </label>
                 <input
                   defaultValue={place.image_url}
@@ -92,7 +92,7 @@ export function PlacesEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="start_time" className="form-label">
-                  Start Time:
+                  start time:
                 </label>
                 <input
                   defaultValue={startTime}
@@ -103,7 +103,7 @@ export function PlacesEdit() {
               </div>
               <div className="mb-3">
                 <label htmlFor="end_time" className="form-label">
-                  End Time:
+                  end time:
                 </label>
                 <input
                   defaultValue={endTime}
@@ -114,14 +114,14 @@ export function PlacesEdit() {
               </div>
               <div className="d-grid gap-2">
                 <button type="submit" className="btn custom-color">
-                  Update Activity
+                  update activity
                 </button>
               </div>
             </form>
           </div>
         </div>
         <Link to={`/trips/${place.trip_id}`} className="btn custom-color mt-3">
-          Back to Trip
+          back to trip
         </Link>
       </div>
     </div>

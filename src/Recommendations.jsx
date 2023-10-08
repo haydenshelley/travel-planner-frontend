@@ -16,23 +16,23 @@ export function Recommendations(props) {
   const [selectedTrip, setSelectedTrip] = useState("");
   const [showForm, setShowForm] = useState(null);
   const categoryOptions = [
-    ["catering.restaurant", "Restuarant(All)"],
-    ["catering.restaurant.burger", "Restuarant(Burger)"],
-    ["catering.restaurant.pizza", "Restuarant(Pizza)"],
-    ["catering.restaurant.sandwich", "Restuarant(Sandwich)"],
-    ["catering.restaurant.mexican", "Restuarant(Mexican)"],
-    ["catering.restaurant.asian", "Restuarant(Asian)"],
-    ["catering.restaurant.american", "Restuarant(American)"],
-    ["catering.fast_food", "Restuarant(Fast Food)"],
-    ["catering.cafe.coffee_shop", "Restuarant(Cafe)"],
-    ["catering.cafe.ice_cream", "Restuarant(Ice Cream)"],
-    ["entertainment.museum", "Entertainment(Museum)"],
-    ["entertainment.aquarium", "Entertainment(Aquarium)"],
-    ["entertainment.cinema", "Entertainment(Movie Theater)"],
-    ["entertainment.bowling_alley", "Entertainment(Bowling)"],
-    ["pet.dog_park", "Dog Park"],
-    ["tourism.attraction", "Tourism Sites"],
-    ["production.brewery", "Brewery"],
+    ["catering.restaurant", "restuarant(all)"],
+    ["catering.restaurant.burger", "restuarant(burger)"],
+    ["catering.restaurant.pizza", "restuarant(pizza)"],
+    ["catering.restaurant.sandwich", "restuarant(sandwich)"],
+    ["catering.restaurant.mexican", "restuarant(mexican)"],
+    ["catering.restaurant.asian", "restuarant(asian)"],
+    ["catering.restaurant.american", "restuarant(american)"],
+    ["catering.fast_food", "restuarant(fast food)"],
+    ["catering.cafe.coffee_shop", "restuarant(cafe)"],
+    ["catering.cafe.ice_cream", "restuarant(ice cream)"],
+    ["entertainment.museum", "entertainment(museum)"],
+    ["entertainment.aquarium", "entertainment(aquarium)"],
+    ["entertainment.cinema", "entertainment(movie theater)"],
+    ["entertainment.bowling_alley", "entertainment(bowling)"],
+    ["pet.dog_park", "dog park"],
+    ["tourism.attraction", "tourism sites"],
+    ["production.brewery", "brewery"],
   ];
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -144,8 +144,8 @@ export function Recommendations(props) {
                 displayedResults.map((result, index) =>
                   result.properties.name ? (
                     <div key={index} className="activity-section">
-                      <h1>{result.properties.name}</h1>
-                      <h3>{result.properties.address_line2}</h3>
+                      <h1>{result.properties.name.toLowerCase()}</h1>
+                      <h3>{result.properties.address_line2.toLowerCase()}</h3>
                       <div>
                         <select
                           className="form-select"
@@ -159,11 +159,11 @@ export function Recommendations(props) {
                           <option value="">add to trip</option>
                           {props.trips.map((trip) => (
                             <option key={trip.id} value={trip.id}>
-                              {trip.title}
+                              {trip.title.toLowerCase()}
                               {"("}
-                              {trip.end_time}
+                              {trip.end_time.toLowerCase()}
                               {" - "}
-                              {trip.start_time}
+                              {trip.start_time.toLowerCase()}
                               {")"}
                             </option>
                           ))}
