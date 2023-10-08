@@ -25,49 +25,93 @@ export function PlacesNew(props) {
   return (
     <div>
       <Header />
-      <h1>New Activity</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Trip:
-          <select name="trip_id" defaultValue={id}>
-            {props.trips.map((trip) => (
-              <option key={trip.id} value={trip.id}>
-                {trip.title}
-              </option>
-            ))}
-          </select>
+      <div
+        id="new-activity"
+        className="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div className="card" style={{ width: "400px" }}>
+          <div
+            className="card-body"
+            style={{ maxHeight: "800px", overflowY: "auto" }}
+          >
+            <h1 className="card-title text-center">New Activity</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="trip_id" className="form-label">
+                  Trip:
+                </label>
+                <select
+                  name="trip_id"
+                  defaultValue={id}
+                  className="form-select"
+                >
+                  {props.trips.map((trip) => (
+                    <option key={trip.id} value={trip.id}>
+                      {trip.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Name:
+                </label>
+                <input name="name" type="text" className="form-control" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="address" className="form-label">
+                  Address:
+                </label>
+                <input name="address" type="text" className="form-control" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="description" className="form-label">
+                  Description:
+                </label>
+                <input
+                  name="description"
+                  type="text"
+                  className="form-control"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="image_url" className="form-label">
+                  Image URL:
+                </label>
+                <input name="image_url" type="text" className="form-control" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="start_time" className="form-label">
+                  Start Time:
+                </label>
+                <input
+                  name="start_time"
+                  type="datetime-local"
+                  className="form-control"
+                  onChange={handleStartTimeChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="end_time" className="form-label">
+                  End Time:
+                </label>
+                <input
+                  name="end_time"
+                  type="datetime-local"
+                  defaultValue={startTime}
+                  className="form-control"
+                  onChange={handleEndTimeChange}
+                />
+              </div>
+              <div className="d-grid gap-2">
+                <button type="submit" className="btn custom-color">
+                  Create Activity
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          Name: <input name="name" type="text" />
-        </div>
-        <div>
-          Address: <input name="address" type="text" />
-        </div>
-        <div>
-          Description: <input name="description" type="text" />
-        </div>
-        <div>
-          Image URL: <input name="image_url" type="text" />
-        </div>
-        <div>
-          Start Time:{" "}
-          <input
-            name="start_time"
-            type="datetime-local"
-            onChange={handleStartTimeChange}
-          />
-        </div>
-        <div>
-          End Time:{" "}
-          <input
-            name="end_time"
-            type="datetime-local"
-            defaultValue={startTime}
-            onChange={handleEndTimeChange}
-          />
-        </div>
-        <button type="submit">Create Activity</button>
-      </form>
+      </div>
     </div>
   );
 }
