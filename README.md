@@ -1,6 +1,6 @@
-# Waypoints - Travel Planner App
+# Waypoints - Travel Planner App (frontend)
 
-Waypoints allows you to plan your trips, add travel plans, discover location-based recommendations, and collaberate with friends on trip planning. This README will guide you through setting up and running the frontend of the application. For the backend, please refer to the Travel Planner API README [Travel Planner API](https://github.com/haydenshelley/travel-planner-api)for instructions.
+Waypoints allows you to plan your trips, add travel plans, discover location-based recommendations, and collaberate with friends on trip planning. This README will guide you through setting up and running the frontend of the application. For the backend, please refer to the Travel Planner API README [Travel Planner API](https://github.com/haydenshelley/travel-planner-api) for instructions.
 
 ## Table of contents
 
