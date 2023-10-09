@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function LandingPage() {
   return (
-    <div className="landingPage">
+    <div className="landing-page">
       <div className="landing-page-objects">
         <h1 id="landing-page-title">waypoint</h1>
         <h4>welcome to your next adventure</h4>
