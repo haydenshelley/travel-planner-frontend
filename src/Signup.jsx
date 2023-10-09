@@ -12,12 +12,10 @@ export function Signup() {
     axios
       .post("http://localhost:3000/users.json", params)
       .then((response) => {
-        console.log(response.data);
         event.target.reset();
         window.location.href = "/trips";
       })
       .catch((error) => {
-        console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
         setIsErrorVisible(true);
       });

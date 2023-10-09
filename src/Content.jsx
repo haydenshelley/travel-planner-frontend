@@ -25,17 +25,13 @@ export function Content() {
   const [userId, setUserId] = useState("");
 
   const handleUsersIndex = () => {
-    console.log("handleUsersIndex");
     axios.get("http://localhost:3000/users.json").then((response) => {
-      console.log(response.data);
       setAllUsers(response.data);
     });
   };
 
   const handleTripsIndex = () => {
-    console.log("handleTripsIndex");
     axios.get("http://localhost:3000/trips.json").then((response) => {
-      console.log(response.data);
       setTrips(response.data);
       setUser(response.data[0].user.name);
       setUserId(response.data[0].user.id);
@@ -43,23 +39,18 @@ export function Content() {
   };
 
   const handleInvitationsIndex = () => {
-    console.log("handleInvitationsIndex");
     axios.get("http://localhost:3000/invitations.json").then((response) => {
-      console.log(response.data);
       setInvitations(response.data);
     });
   };
 
   const handleTagalongIndex = () => {
-    console.log("handleTagalongIndex");
     axios.get("http://localhost:3000/tagalong.json").then((response) => {
-      console.log(response.data);
       setTagalongTrips(response.data);
     });
   };
 
   const handleCreateTrip = (params, successCallback) => {
-    console.log("handleCreateTrip", params);
     axios.post("http://localhost:3000/trips.json", params).then((response) => {
       setTrips([...trips, response.data]);
       successCallback();
@@ -67,7 +58,6 @@ export function Content() {
   };
 
   const handleCreatePlace = (params, successCallback) => {
-    console.log("handleCreatePlace", params);
     axios.post("http://localhost:3000/places.json", params).then((response) => {
       successCallback();
       window.location.reload(true);

@@ -27,7 +27,7 @@ export function Footer() {
         <a
           href="https://react.dev/"
           target="_blank"
-          className="text-light me-3" // Increase the margin here
+          className="text-light me-3"
         >
           <img
             src="https://cdn1.iconfinder.com/data/icons/programing-development-8/24/react_logo-512.png"
@@ -38,7 +38,7 @@ export function Footer() {
         <a
           href="https://rubyonrails.org/"
           target="_blank"
-          className="text-light me-3" // Increase the margin here
+          className="text-light me-3"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png"
