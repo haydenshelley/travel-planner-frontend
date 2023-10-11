@@ -19,9 +19,7 @@ export function TripsShow() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/trips/${id}.json`
-        );
+        const response = await axios.get(`/trips/${id}.json`);
         const data = response.data;
 
         setTrip(data);
@@ -44,9 +42,7 @@ export function TripsShow() {
   }, [id]);
 
   const handleDestroyPlace = (place) => {
-    axios
-      .delete(`http://localhost:3000/places/${place.id}.json`)
-      .then(window.location.reload(true));
+    axios.delete(`/places/${place.id}.json`).then(window.location.reload(true));
   };
 
   return (

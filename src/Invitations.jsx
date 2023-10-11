@@ -13,12 +13,9 @@ export function Invitations(props) {
     console.log(travelerId);
     if (travelerId) {
       axios
-        .patch(
-          `http://localhost:3000/trips/${invitation.id}/travelers/${travelerId}.json`,
-          {
-            accepted: true,
-          }
-        )
+        .patch(`/trips/${invitation.id}/travelers/${travelerId}.json`, {
+          accepted: true,
+        })
         .then(() => {
           window.location.reload(true);
         })
@@ -50,7 +47,7 @@ export function Invitations(props) {
     console.log(travelerId);
     if (travelerId)
       axios
-        .delete("http://localhost:3000/invitations/decline.json", {
+        .delete("/invitations/decline.json", {
           data: { traveler_id: travelerId },
         })
         .then(() => {

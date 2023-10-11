@@ -25,45 +25,45 @@ export function Content() {
   const [userId, setUserId] = useState("");
 
   const handleUsersIndex = () => {
-    axios.get("http://localhost:3000/users.json").then((response) => {
+    axios.get("/users.json").then((response) => {
       setAllUsers(response.data);
     });
   };
 
   const handleCurrentUser = () => {
-    axios.get("http://localhost:3000/current.json").then((response) => {
+    axios.get("/current.json").then((response) => {
       setUser(response.data.name);
       setUserId(response.data.id);
     });
   };
 
   const handleTripsIndex = () => {
-    axios.get("http://localhost:3000/trips.json").then((response) => {
+    axios.get("/trips.json").then((response) => {
       setTrips(response.data);
     });
   };
 
   const handleInvitationsIndex = () => {
-    axios.get("http://localhost:3000/invitations.json").then((response) => {
+    axios.get("/invitations.json").then((response) => {
       setInvitations(response.data);
     });
   };
 
   const handleTagalongIndex = () => {
-    axios.get("http://localhost:3000/tagalong.json").then((response) => {
+    axios.get("/tagalong.json").then((response) => {
       setTagalongTrips(response.data);
     });
   };
 
   const handleCreateTrip = (params, successCallback) => {
-    axios.post("http://localhost:3000/trips.json", params).then((response) => {
+    axios.post("/trips.json", params).then((response) => {
       setTrips([...trips, response.data]);
       successCallback();
     });
   };
 
   const handleCreatePlace = (params, successCallback) => {
-    axios.post("http://localhost:3000/places.json", params).then((response) => {
+    axios.post("/places.json", params).then((response) => {
       successCallback();
       window.location.reload(true);
     });

@@ -12,14 +12,12 @@ export function TripsIndex(props) {
   const [friendInvited, setFriendInvited] = useState(false);
 
   const handleDestroyTrip = (trip) => {
-    axios
-      .delete(`http://localhost:3000/trips/${trip.id}.json`)
-      .then(window.location.reload(true));
+    axios.delete(`/trips/${trip.id}.json`).then(window.location.reload(true));
   };
 
   const handleInviteFriend = () => {
     axios
-      .post(`http://localhost:3000/trips/${selectedTripId}/travelers.json`, {
+      .post(`/trips/${selectedTripId}/travelers.json`, {
         user_id: selectedFriendId,
       })
       .then((response) => {

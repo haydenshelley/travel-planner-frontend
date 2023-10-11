@@ -54,7 +54,7 @@ export function Recommendations(props) {
   const handleRecommendations = () => {
     axios
       .get(
-        `http://localhost:3000/places/recommendations.json?location=${location}&proximity=${proximity}&category=${category}`
+        `/places/recommendations.json?location=${location}&proximity=${proximity}&category=${category}`
       )
       .then((response) => {
         console.log(response.data);

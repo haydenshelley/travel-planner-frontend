@@ -10,7 +10,7 @@ export function PlacesEdit() {
   const [endTime, setEndTime] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/places/${id}.json`).then((response) => {
+    axios.get(`/places/${id}.json`).then((response) => {
       setPlace(response.data);
       setStartTime(formatDateForInput(response.data.start_time));
       setEndTime(formatDateForInput(response.data.end_time));
@@ -26,7 +26,7 @@ export function PlacesEdit() {
     e.preventDefault();
     const formData = new FormData(e.target);
     axios
-      .patch(`http://localhost:3000/places/${id}.json`, formData)
+      .patch(`/places/${id}.json`, formData)
       .then(window.location.reload(true));
   };
 

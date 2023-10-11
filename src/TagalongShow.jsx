@@ -25,9 +25,7 @@ export function TagalongShow(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/tagalong/${id}.json`
-        );
+        const response = await axios.get(`/tagalong/${id}.json`);
         setTrip(response.data);
         const hostId = response.data.trip.user_id;
         const hostName = props.allUsers.find((user) => user.id === hostId);

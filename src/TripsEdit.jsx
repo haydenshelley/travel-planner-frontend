@@ -10,7 +10,7 @@ export function TripsEdit() {
   const [endTime, setEndTime] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/trips/${id}.json`).then((response) => {
+    axios.get(`/trips/${id}.json`).then((response) => {
       setTrip(response.data);
       setStartTime(formatDateForInput(response.data.start_time));
       setEndTime(formatDateForInput(response.data.end_time));
@@ -26,7 +26,7 @@ export function TripsEdit() {
     e.preventDefault();
     const formData = new FormData(e.target);
     axios
-      .patch(`http://localhost:3000/trips/${id}.json`, formData)
+      .patch(`/trips/${id}.json`, formData)
       .then((window.location.href = "/trips"));
   };
 
