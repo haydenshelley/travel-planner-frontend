@@ -26,7 +26,7 @@ export function TagalongIndex(props) {
             <div className="card-body">
               <h5 className="card-title">
                 <Link id="card-title" to={`/tagalong/${tagalong.id}`}>
-                  {tagalong.trip.title?.toLowerCase()}
+                  {tagalong.trip.title}
                 </Link>
               </h5>
               <p className="card-text">
@@ -35,9 +35,9 @@ export function TagalongIndex(props) {
               </p>
               <h3 className="card-text">
                 host:{" "}
-                {props.allUsers
-                  .find((user) => user.id === tagalong.trip.user_id)
-                  ?.name.toLowerCase() || "Unknown"}
+                {props.allUsers.find(
+                  (user) => user.id === tagalong.trip.user_id
+                )?.name || "Unknown"}
               </h3>
             </div>
           </div>

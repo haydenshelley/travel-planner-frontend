@@ -42,9 +42,7 @@ export function PlacesEdit() {
             className="card-body"
             style={{ maxHeight: "800px", overflowY: "auto" }}
           >
-            <h1 className="card-title text-center">
-              editing {place.name?.toLowerCase()}
-            </h1>
+            <h1 className="card-title text-center">editing {place.name}</h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">

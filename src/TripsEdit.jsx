@@ -42,9 +42,7 @@ export function TripsEdit() {
             className="card-body"
             style={{ maxHeight: "800px", overflowY: "auto" }}
           >
-            <h1 className="card-title text-center">
-              editing {trip.title?.toLowerCase()}
-            </h1>
+            <h1 className="card-title text-center">editing {trip.title}</h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">

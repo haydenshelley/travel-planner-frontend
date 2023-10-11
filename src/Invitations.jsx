@@ -71,14 +71,12 @@ export function Invitations(props) {
               alt="Trip Image"
             />
             <div className="card-body">
-              <h1 className="card-title">{invitation.title?.toLowerCase()}</h1>
+              <h1 className="card-title">{invitation.title}</h1>
               <p className="card-text">
                 {formatDate(invitation.start_time)} -{" "}
                 {formatDate(invitation.end_time)}
               </p>
-              <h3 className="card-text">
-                host: {invitation.user_name.toLowerCase()}
-              </h3>
+              <h3 className="card-text">host: {invitation.user_name}</h3>
               <button
                 className="btn custom-color"
                 onClick={() => handleAcceptInvitation(invitation)}

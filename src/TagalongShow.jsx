@@ -53,7 +53,7 @@ export function TagalongShow(props) {
     <div>
       <Header />
       <h1>
-        {host?.toLowerCase()}'s {trip.trip.title?.toLowerCase()} activities
+        {host}'s {trip.trip.title} activities
       </h1>
       <h4>
         {formatDate(trip.trip.start_time)} - {formatDate(trip.trip.end_time)}
@@ -67,9 +67,9 @@ export function TagalongShow(props) {
               alt="Trip Image"
             />
             <div className="card-body">
-              <h3 className="card-text">{place.name?.toLowerCase()}</h3>
-              <p className="card-text">{place.address?.toLowerCase()}</p>
-              <p className="card-text">{place.date?.toLowerCase()}</p>
+              <h3 className="card-text">{place.name}</h3>
+              <p className="card-text">{place.address}</p>
+              <p className="card-text">{place.date}</p>
               <p className="card-text">
                 {formatTime(place.start)} - {formatTime(place.end)}
               </p>

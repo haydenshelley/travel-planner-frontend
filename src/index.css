@@ -12,6 +12,7 @@ html {
   flex-grow: 1;
   text-align: center;
   font-family: 'Raleway', sans-serif;
+  text-transform: lowercase;
 }
 
 .navbar {

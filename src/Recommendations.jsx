@@ -144,8 +144,8 @@ export function Recommendations(props) {
                 displayedResults.map((result, index) =>
                   result.properties.name ? (
                     <div key={index} className="activity-section">
-                      <h1>{result.properties.name.toLowerCase()}</h1>
-                      <h3>{result.properties.address_line2.toLowerCase()}</h3>
+                      <h1>{result.properties.name}</h1>
+                      <h3>{result.properties.address_line2}</h3>
                       <div>
                         <select
                           className="form-select"
@@ -159,11 +159,11 @@ export function Recommendations(props) {
                           <option value="">add to trip</option>
                           {props.trips.map((trip) => (
                             <option key={trip.id} value={trip.id}>
-                              {trip.title.toLowerCase()}
+                              {trip.title}
                               {" ("}
-                              {trip.end_time.toLowerCase()}
+                              {trip.end_time}
                               {" - "}
-                              {trip.start_time.toLowerCase()}
+                              {trip.start_time}
                               {")"}
                             </option>
                           ))}

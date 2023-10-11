@@ -12,7 +12,7 @@ export function TripsShow() {
   const formatTime = (timeString) => {
     const parts = timeString.split(" ");
     const [hour, minute] = parts[0].split(":");
-    const ampm = parts[1].toLowerCase();
+    const ampm = parts[1];
     return `${parseInt(hour, 10)}:${minute} ${ampm}`;
   };
 
@@ -42,9 +42,9 @@ export function TripsShow() {
   return (
     <div>
       <Header />
-      <h1>{trip.title?.toLowerCase()} activities</h1>
+      <h1>{trip.title} activities</h1>
       <h4>
-        {trip.start_time?.toLowerCase()} - {trip.end_time?.toLowerCase()}
+        {trip.start_time} - {trip.end_time}
       </h4>
       <Link className="btn custom-color" to={`/trips/${id}/places/new`}>
         new activity
@@ -58,13 +58,13 @@ export function TripsShow() {
               alt="trip image"
             />
             <div className="card-body">
-              <h2 className="card-title">{place.name.toLowerCase()}</h2>
-              <p className="card-text">{place.address.toLowerCase()}</p>
-              <p className="card-text">{place.date.toLowerCase()}</p>
+              <h2 className="card-title">{place.name}</h2>
+              <p className="card-text">{place.address}</p>
+              <p className="card-text">{place.date}</p>
               <p className="card-text">
                 {formatTime(place.start)} - {formatTime(place.end)}
               </p>
-              <p className="card-text">{place.description.toLowerCase()}</p>
+              <p className="card-text">{place.description}</p>
               <Link
                 className="btn custom-color"
                 to={`/trips/places/${place.id}/edit`}

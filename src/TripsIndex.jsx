@@ -47,7 +47,7 @@ export function TripsIndex(props) {
         </div>
       ) : (
         <div>
-          <h1>{props.trips[0].user.name.toLowerCase()}'s trips</h1>
+          <h1>{props.trips[0].user.name}'s trips</h1>
           <div className="card-container">
             {sortedTrips.map((trip) => (
               <div key={trip.id} className="card" style={{ width: "25rem" }}>
@@ -59,12 +59,11 @@ export function TripsIndex(props) {
                 <div className="card-body">
                   <h5 className="card-title">
                     <Link id="card-title" to={`/trips/${trip.id}`}>
-                      {trip.title.toLowerCase()}
+                      {trip.title}
                     </Link>
                   </h5>
                   <p className="card-text">
-                    {trip.start_time.toLowerCase()} -{" "}
-                    {trip.end_time.toLowerCase()}
+                    {trip.start_time} - {trip.end_time}
                   </p>
                   <div>
                     <select
