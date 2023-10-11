@@ -10,7 +10,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://waypoints-travel-planner.onrender.com";
+    : "https://waypoints-travel-planner.onrender.com.json";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
