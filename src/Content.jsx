@@ -26,14 +26,12 @@ export function Content() {
 
   const handleUsersIndex = () => {
     axios.get("http://localhost:3000/users.json").then((response) => {
-      console.log(response.data);
       setAllUsers(response.data);
     });
   };
 
   const handleCurrentUser = () => {
     axios.get("http://localhost:3000/current.json").then((response) => {
-      console.log(response.data);
       setUser(response.data.name);
       setUserId(response.data.id);
     });
