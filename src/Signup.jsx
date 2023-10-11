@@ -10,7 +10,7 @@ export function Signup() {
     setErrors([]);
     const params = new FormData(event.target);
     axios
-      .post("http://localhost:3000/users.json", params)
+      .post("/users.json", params)
       .then((response) => {
         event.target.reset();
         window.location.href = "/trips";
