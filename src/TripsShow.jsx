@@ -17,10 +17,15 @@ export function TripsShow() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/trips/${id}.json`)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/trips/${id}.json`
+        );
+        const data = response.data;
+
         setTrip(data);
+
         const sortedPlaces = [...data.places].sort((a, b) => {
           const dateCompare = new Date(a.date) - new Date(b.date);
           if (dateCompare === 0) {
@@ -28,9 +33,14 @@ export function TripsShow() {
           }
           return dateCompare;
         });
+
         setPlaces(sortedPlaces);
-      })
-      .catch((error) => console.error("Error fetching trip:", error));
+      } catch (error) {
+        console.error("Error fetching trip:", error);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const handleDestroyPlace = (place) => {
