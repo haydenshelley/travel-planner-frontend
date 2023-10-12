@@ -82,12 +82,12 @@ export function TripsIndex(props) {
                     <div>{divContent}</div>
                   </div>
                   <div className="horizontal-buttons">
-                    <a
+                    <Link
                       className="btn custom-color"
-                      href={`/trips/${trip.id}/edit`}
+                      to={`/trips/${trip.id}/edit`}
                     >
                       edit trip
-                    </a>
+                    </Link>
                     <button
                       className="btn custom-color"
                       onClick={() => props.handleDestroyTrip(trip)}
