@@ -43,7 +43,7 @@ export function TripsShow() {
   }, [id]);
 
   const handleDestroyPlace = (place) => {
-    axios.delete(`/places/${place.id}.json`).then(navigate(`/trips/${id}`));
+    axios.delete(`/places/${place.id}.json`).then(navigate("/trips"));
   };
 
   return (

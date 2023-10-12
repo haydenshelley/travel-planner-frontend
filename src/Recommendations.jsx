@@ -71,7 +71,7 @@ export function Recommendations(props) {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreatePlace(params, () => e.target.reset());
-    navigate(`/trips/${id}`);
+    navigate("/trips");
   };
 
   return (
