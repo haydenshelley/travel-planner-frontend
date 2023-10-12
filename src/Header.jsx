@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const handleClick = (event) => {
@@ -8,13 +9,17 @@ export function Header() {
     window.location.href = "/";
   };
 
+  <Link className="btn custom-color" to="/signup">
+    register
+  </Link>;
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg border-bottom border-body">
         <div className="container-fluid">
-          <a id="navbar-logo" className="navbar-brand" href="/trips">
+          <Link id="navbar-logo" className="navbar-brand" to="/trips">
             waypoint
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,34 +34,34 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/trips">
+                <Link className="nav-link" aria-current="page" to="/trips">
                   my trips
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/trips/new">
+                <Link className="nav-link" aria-current="page" to="/trips/new">
                   new trip
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/recommendations">
+                <Link className="nav-link" to="/recommendations">
                   recommendations
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/invitations">
+                <Link className="nav-link" to="/invitations">
                   invitations
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/tagalong">
+                <Link className="nav-link" to="/tagalong">
                   tagalongs
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={handleClick} href="#">
+                <Link className="nav-link" onClick={handleClick} to="#">
                   logout
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
