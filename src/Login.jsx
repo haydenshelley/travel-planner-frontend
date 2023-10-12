@@ -24,6 +24,7 @@ export function Login() {
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
         navigate("/trips");
+        handleTripsIndex();
         if (process.env.NODE_ENV === "development") {
           window.location.reload(true);
         }
