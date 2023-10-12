@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -9,6 +10,7 @@ if (jwt) {
 export function Login() {
   const [errors, setErrors] = useState([]);
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +23,9 @@ export function Login() {
           "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/trips";
+        navigate("/trips");
+        window.location.reload(true);
+        // window.location.href = "/trips";
       })
       .catch((error) => {
         setErrors(["Invalid email or password"]);
@@ -30,7 +34,9 @@ export function Login() {
   };
 
   const handleCancel = () => {
-    window.location.href = "/";
+    // window.location.href = "/";
+    navigate("/");
+    window.location.reload(true);
   };
 
   return (
