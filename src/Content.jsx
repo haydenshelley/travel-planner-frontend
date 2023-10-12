@@ -65,7 +65,6 @@ export function Content() {
   const handleCreatePlace = (params, successCallback) => {
     axios.post("/places.json", params).then((response) => {
       successCallback();
-      window.location.reload(true);
     });
   };
 
@@ -82,7 +81,6 @@ export function Content() {
           path="/"
           element={jwt ? <Navigate to="/trips" /> : <LandingPage />}
         />
-        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route

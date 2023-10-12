@@ -59,13 +59,11 @@ export function Recommendations(props) {
         `/places/recommendations.json?location=${location}&proximity=${proximity}&category=${category}`
       )
       .then((response) => {
-        console.log(response.data);
         setSelectedTrip("");
         setShowForm(null);
         setResults(response.data.features);
         setCurrentPage(1);
         setResultsClicked(true);
-        console.log(props.trips);
       });
   };
 

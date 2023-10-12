@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Header } from "./Header";
 
@@ -8,6 +8,7 @@ export function PlacesEdit() {
   const [place, setPlace] = useState({});
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`/places/${id}.json`).then((response) => {
@@ -27,7 +28,7 @@ export function PlacesEdit() {
     const formData = new FormData(e.target);
     axios
       .patch(`/places/${id}.json`, formData)
-      .then(window.location.reload(true));
+      .then(navigate(`/places/${id}/edit`));
   };
 
   return (

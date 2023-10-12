@@ -1,8 +1,10 @@
 import axios from "axios";
 import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 
 export function Invitations(props) {
   const currentUserId = props.userId;
+  navigate = useNavigate();
 
   const handleAcceptInvitation = (invitation) => {
     const traveler = invitation.travelers.filter(
@@ -17,12 +19,10 @@ export function Invitations(props) {
           accepted: true,
         })
         .then(() => {
-          window.location.reload(true);
+          navigate("/invitations");
         })
         .catch((error) => {
           console.error("Error accepting invitation:", error);
-          console.log(invitation.id);
-          console.log(travelerId);
         });
     }
   };

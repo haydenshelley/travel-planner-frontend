@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import axios from "axios";
 import { useState } from "react";
@@ -10,9 +10,10 @@ export function TripsIndex(props) {
   const [selectedFriendId, setSelectedFriendId] = useState("");
   const [selectedTripId, setSelectedTripId] = useState("");
   const [friendInvited, setFriendInvited] = useState(false);
+  const navigate = useNavigate();
 
   const handleDestroyTrip = (trip) => {
-    axios.delete(`/trips/${trip.id}.json`).then(window.location.reload(true));
+    axios.delete(`/trips/${trip.id}.json`).then(navigate("/trips"));
   };
 
   const handleInviteFriend = () => {
