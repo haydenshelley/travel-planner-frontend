@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Invitations(props) {
   const currentUserId = props.userId;
-  navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAcceptInvitation = (invitation) => {
     const traveler = invitation.travelers.filter(

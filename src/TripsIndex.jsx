@@ -22,7 +22,6 @@ export function TripsIndex(props) {
         user_id: selectedFriendId,
       })
       .then((response) => {
-        console.log("Friend invited:", response.data);
         setSelectedFriendId("");
         setFriendInvited(true);
       })
@@ -69,8 +68,6 @@ export function TripsIndex(props) {
                       onChange={(e) => {
                         setSelectedFriendId(e.target.value);
                         setSelectedTripId(trip.id);
-                        console.log("Selected Friend ID:", e.target.value);
-                        console.log("Current Trip ID:", trip.id);
                       }}
                       value={selectedFriendId}
                     >
