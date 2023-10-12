@@ -24,7 +24,7 @@ export function Login() {
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
         navigate("/trips");
-        window.location.reload(true);
+        // window.location.reload(true);
         // window.location.href = "/trips";
       })
       .catch((error) => {
@@ -36,7 +36,6 @@ export function Login() {
   const handleCancel = () => {
     // window.location.href = "/";
     navigate("/");
-    window.location.reload(true);
   };
 
   return (
