@@ -1,17 +1,18 @@
 import { Header } from "./Header";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export function PlacesNew(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreatePlace(params, () => e.target.reset());
-    window.location.href = `/trips/${id}`;
+    navigate(`/trips/${id}`);
   };
 
   const handleStartTimeChange = (e) => {

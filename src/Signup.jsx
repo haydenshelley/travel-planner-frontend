@@ -4,6 +4,7 @@ import { useState } from "react";
 export function Signup() {
   const [errors, setErrors] = useState([]);
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,7 +14,7 @@ export function Signup() {
       .post("/users.json", params)
       .then((response) => {
         event.target.reset();
-        window.location.href = "/trips";
+        navigate("/trips");
       })
       .catch((error) => {
         setErrors(error.response.data.errors);
@@ -22,7 +23,7 @@ export function Signup() {
   };
 
   const handleCancel = () => {
-    window.location.href = "/";
+    navigate("/");
   };
 
   return (

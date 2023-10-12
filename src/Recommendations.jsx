@@ -1,8 +1,10 @@
 import { Header } from "./Header";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Recommendations(props) {
+  const navigate = useNavigate();
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 5;
@@ -71,7 +73,7 @@ export function Recommendations(props) {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreatePlace(params, () => e.target.reset());
-    window.location.href = `/trips/${id}`;
+    navigate(`/trips/${id}`);
   };
 
   return (

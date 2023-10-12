@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Header } from "./Header";
 
@@ -8,6 +8,7 @@ export function TripsEdit() {
   const [trip, setTrip] = useState({});
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`/trips/${id}.json`).then((response) => {
@@ -25,9 +26,7 @@ export function TripsEdit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    axios
-      .patch(`/trips/${id}.json`, formData)
-      .then((window.location.href = "/trips"));
+    axios.patch(`/trips/${id}.json`, formData).then(navigate("/trips"));
   };
 
   return (

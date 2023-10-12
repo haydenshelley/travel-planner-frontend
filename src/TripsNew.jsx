@@ -1,15 +1,17 @@
 import { Header } from "./Header";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function TripsNew(props) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new FormData(e.target);
     props.onCreateTrip(params, () => e.target.reset());
-    window.location.href = "/trips";
+    navigate("/trips");
   };
 
   const handleStartDateChange = (e) => {
