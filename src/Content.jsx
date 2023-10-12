@@ -78,10 +78,11 @@ export function Content() {
   return (
     <div>
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={jwt ? <Navigate to="/trips" /> : <LandingPage />}
-        />
+        /> */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route
