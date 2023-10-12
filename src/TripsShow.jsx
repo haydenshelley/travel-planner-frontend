@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams, useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +8,7 @@ export function TripsShow() {
   const { id } = useParams();
   const [trip, setTrip] = useState({});
   const [places, setPlaces] = useState([]);
+  const navigate = useNavigate();
 
   const formatTime = (timeString) => {
     const parts = timeString.split(" ");
@@ -42,7 +43,7 @@ export function TripsShow() {
   }, [id]);
 
   const handleDestroyPlace = (place) => {
-    axios.delete(`/places/${place.id}.json`).then(window.location.reload(true));
+    axios.delete(`/places/${place.id}.json`).then(navigate(`/trips/${id}`));
   };
 
   return (
