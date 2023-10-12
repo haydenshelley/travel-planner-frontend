@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
@@ -23,6 +23,7 @@ export function Content() {
   const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
 
   const handleUsersIndex = () => {
     axios.get("/users.json").then((response) => {
@@ -68,6 +69,13 @@ export function Content() {
     });
   };
 
+  const handleDestroyTrip = (trip) => {
+    const deletedTripId = trip.id;
+    axios.delete(`/trips/${trip.id}.json`).then(() => {
+      setTrips(trips.filter((trip) => trip.id !== deletedTripId));
+    });
+  };
+
   useEffect(handleTripsIndex, []);
   useEffect(handleInvitationsIndex, []);
   useEffect(handleUsersIndex, []);
@@ -85,7 +93,14 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/trips"
-          element={<TripsIndex trips={trips} user={user} allUsers={allUsers} />}
+          element={
+            <TripsIndex
+              trips={trips}
+              user={user}
+              allUsers={allUsers}
+              handleDestroyTrip={handleDestroyTrip}
+            />
+          }
         />
         <Route path="/trips/:id" element={<TripsShow />} />
         <Route

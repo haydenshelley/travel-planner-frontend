@@ -10,11 +10,6 @@ export function TripsIndex(props) {
   const [selectedFriendId, setSelectedFriendId] = useState("");
   const [selectedTripId, setSelectedTripId] = useState("");
   const [friendInvited, setFriendInvited] = useState(false);
-  const navigate = useNavigate();
-
-  const handleDestroyTrip = (trip) => {
-    axios.delete(`/trips/${trip.id}.json`).then(navigate("/trips"));
-  };
 
   const handleInviteFriend = () => {
     axios
@@ -95,7 +90,7 @@ export function TripsIndex(props) {
                     </a>
                     <button
                       className="btn custom-color"
-                      onClick={() => handleDestroyTrip(trip)}
+                      onClick={() => props.handleDestroyTrip(trip)}
                     >
                       cancel trip
                     </button>
