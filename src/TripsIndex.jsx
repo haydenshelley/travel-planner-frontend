@@ -13,11 +13,7 @@ export function TripsIndex(props) {
   const navigate = useNavigate();
 
   const handleDestroyTrip = (trip) => {
-    axios.delete(`/trips/${trip.id}.json`).then((response) => {
-      const deletedTripId = response.data.id;
-      sortedTrips(props.trips.filter((trip) => trip.id !== deletedTripId));
-      navigate("/trips");
-    });
+    axios.delete(`/trips/${trip.id}.json`).then(navigate("/trips"));
   };
 
   const handleInviteFriend = () => {
