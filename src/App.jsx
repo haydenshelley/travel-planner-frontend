@@ -5,7 +5,7 @@ import { Footer } from "./Footer";
 function App() {
   return (
     <div>
-      <BrowserRouter basename="/React">
+      <BrowserRouter basename="/">
         <div className="wrapper">
           <div className="main-content">
             <Content />
