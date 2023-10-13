@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Content } from "./Content";
 import { Footer } from "./Footer";
+import { MyErrorBoundary } from "./MyErrorBoundary";
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
       <BrowserRouter basename="/">
         <div className="wrapper">
           <div className="main-content">
-            <Content />
+            <MyErrorBoundary>
+              <Content />
+            </MyErrorBoundary>
           </div>
           <Footer />
         </div>
