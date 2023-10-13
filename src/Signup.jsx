@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
@@ -15,6 +16,7 @@ export function Signup() {
       .then((response) => {
         event.target.reset();
         navigate("/trips");
+        handleTripsIndex();
       })
       .catch((error) => {
         setErrors(error.response.data.errors);

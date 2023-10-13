@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
@@ -23,7 +23,6 @@ export function Content() {
   const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState("");
   const [userId, setUserId] = useState("");
-  const navigate = useNavigate();
 
   const handleUsersIndex = () => {
     axios.get("/users.json").then((response) => {
@@ -76,11 +75,17 @@ export function Content() {
     });
   };
 
-  useEffect(handleTripsIndex, []);
-  useEffect(handleInvitationsIndex, []);
-  useEffect(handleUsersIndex, []);
-  useEffect(handleCurrentUser, []);
-  useEffect(handleTagalongIndex, []);
+  useEffect(() => {
+    const triggerFlag = localStorage.getItem("triggerInfo");
+    if (triggerFlag === "true") {
+      localStorage.setItem("triggerInfo", "false");
+      handleTripsIndex();
+      handleInvitationsIndex();
+      handleUsersIndex();
+      handleCurrentUser();
+      handleTagalongIndex();
+    }
+  });
 
   return (
     <div>
