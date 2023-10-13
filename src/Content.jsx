@@ -76,16 +76,12 @@ export function Content() {
   };
 
   useEffect(() => {
-    const triggerFlag = localStorage.getItem("triggerInfo");
-    if (triggerFlag === "true") {
-      localStorage.setItem("triggerInfo", "false");
-      handleTripsIndex();
-      handleInvitationsIndex();
-      handleUsersIndex();
-      handleCurrentUser();
-      handleTagalongIndex();
-    }
-  });
+    handleTripsIndex();
+    handleInvitationsIndex();
+    handleUsersIndex();
+    handleCurrentUser();
+    handleTagalongIndex();
+  }, []);
 
   return (
     <div>

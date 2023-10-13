@@ -11,9 +11,6 @@ export function Login() {
   const [errors, setErrors] = useState([]);
   const [isErrorVisible, setIsErrorVisible] = useState(false);
   const navigate = useNavigate();
-  const triggerHandleInfo = () => {
-    localStorage.setItem("triggerInfo", "true");
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +23,6 @@ export function Login() {
           "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        triggerHandleInfo();
         navigate("/trips");
         if (process.env.NODE_ENV === "development") {
           window.location.reload(true);
